@@ -9,6 +9,9 @@ public class Entries
 
     public void JournalEntry()
     {
-        
+        PromptGenerator question = new PromptGenerator();
+        Console.WriteLine("Please enter your response to the following prompt:");
+        question.RandomNumber();  
+
     }
 }

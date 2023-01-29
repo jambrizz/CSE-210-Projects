@@ -6,19 +6,22 @@ public class Journal
 
     public void FeatureSelection(int _featureSelection)
     {
-        Entries entries = new Entries();
+        //Entries entries = new Entries();
+        PromptGenerator prompt = new PromptGenerator();
+        File file = new File();
+
 
         if (_featureSelection == 1)
         {
-            Console.WriteLine("Display");
+            file.Display();
         }
         else if (_featureSelection == 2)
         {
-            entries.JournalEntry();
+            prompt.RandomNumber();
         }
         else if (_featureSelection == 3)
         {
-            Console.WriteLine("Load");
+            file.LoadFile();
         }
         else if (_featureSelection == 4)
         {
@@ -32,10 +35,5 @@ public class Journal
         {
             Console.WriteLine("Please enter a valid number");
         }
-    }
-
-    public void Display()
-    {
-        
     }
 }

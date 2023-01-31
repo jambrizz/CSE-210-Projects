@@ -3,11 +3,12 @@ using System;
 public class PromptGenerator
 {
     public int _promptNumber;
-
     
     public void QuestionPrompt(int _promptNumber)
     {
-        Entries entries = new Entries();
+        //Entries entries = new Entries();
+
+        int x = 0;
 
         List<string> _promptQuestions = new List<string>()
         {
@@ -15,7 +16,10 @@ public class PromptGenerator
             "What is something that you are grateful for today?",
             "What is something that you wish you could have done differently today?",
             "What is something that you learned today?",
-            "What is something that you are looking forward to tomorrow?"
+            "What is something that you are looking forward to tomorrow?",
+            "Who was the most influential person you interacted with today?",
+            "What is something that you are proud of today?",
+            "Did you learn anything new today?",
         };
 
         string question = _promptQuestions[_promptNumber];
@@ -23,15 +27,27 @@ public class PromptGenerator
         Console.WriteLine($"{question}");
         string userReply = Console.ReadLine();
 
-        DateTime theCurrentTime = DateTime.Now;
+        if (userReply != "")
+        {
+            Entries entries = new Entries();
+            
+            DateTime theCurrentTime = DateTime.Now;
+            entries._tempJournalEntry.Add(new Entries() 
+            { 
+                _entryDate = theCurrentTime.ToString("MM/dd/yyyy"), 
+                _promptQuestion = question, 
+                _journalEntry = userReply 
+            });
+            
+        entries.JournalEntry();
+        }
+        /*
         entries._entryDate = theCurrentTime.ToString("MM/dd/yyyy");
         entries._promptQuestion = question;
         entries._journalEntry = userReply;
         
         entries.JournalEntry();
-        //Entries entries = new Entries();
-        //entries._journalEntry = userReply;
-        //entries._promptQuestion = question;
+        */
 
 
     }
@@ -39,13 +55,8 @@ public class PromptGenerator
     public void RandomNumber()
     {
         Random random = new Random();
-        int randomNumber = random.Next(0, 5);
+        int randomNumber = random.Next(0, 8);
         _promptNumber = randomNumber;
         QuestionPrompt(_promptNumber);
-    }
-
-    public void UniquePrompt()
-    {
-        
     }
 }

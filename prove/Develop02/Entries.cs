@@ -2,32 +2,47 @@ using System.IO;
 
 public class Entries
 {
-    public string _fileName = "Journal.txt";
-
     File file = new File();
-    //public List<Entries> _tempJournalEntry = new List<Entries>();
+    public List<Entries> _tempJournalEntry = new List<Entries>();
+    
     public string _entryDate;
     public string _promptQuestion;
     public string _journalEntry;
 
     public void JournalEntry()
     {
+        Console.WriteLine($"{file.workingOnLoadFile}");
+        Console.WriteLine($"{file.userLoadedFileName}");
 
-        using (StreamWriter outputFile = new StreamWriter(_fileName, true))
+        if (file.workingOnLoadFile == true)
         {
-            outputFile.WriteLine($"{_entryDate}\n{_promptQuestion}\n{_journalEntry}\n");
+            for(int i = 0; i < _tempJournalEntry.Count; i++)
+            {
+                using (StreamWriter outputFile = new StreamWriter(file.userLoadedFileName, true))
+                {
+                    outputFile.WriteLine($"{_tempJournalEntry[i]._entryDate}\n{_tempJournalEntry[i]._promptQuestion}\n{_tempJournalEntry[i]._journalEntry}\n");
+                }
+            }  
         }
+        else
+        {
+            for(int i = 0; i < _tempJournalEntry.Count; i++)
+            {
+                using (StreamWriter outputFile = new StreamWriter(file._fileName, true))
+                {
+                    outputFile.WriteLine($"{_tempJournalEntry[i]._entryDate}\n{_tempJournalEntry[i]._promptQuestion}\n{_tempJournalEntry[i]._journalEntry}\n");
+                }
+            }
+               
+        }
+        
         /*
-        _tempJournalEntry.Add(new Entries()
+        for(int i = 0; i < _tempJournalEntry.Count; i++)
         {
-            _entryDate = _entryDate, 
-            _promptQuestion = _promptQuestion,
-            _journalEntry = _journalEntry
-        });
-       
-        foreach (Entries entry in _tempJournalEntry)
-        {
-            Console.WriteLine($"{entry._entryDate}\n{entry._promptQuestion}\n{entry._journalEntry}\n");
+            using (StreamWriter outputFile = new StreamWriter(file._fileName, true))
+            {
+                outputFile.WriteLine($"{_tempJournalEntry[i]._entryDate}\n{_tempJournalEntry[i]._promptQuestion}\n{_tempJournalEntry[i]._journalEntry}\n");
+            }
         }
         */
     }

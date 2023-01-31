@@ -20,10 +20,19 @@ class Program
         if (userSelection == "5")
         {
             x ++;
-        }   
-        int feature = Convert.ToInt32(userSelection);
-        Journal journal = new Journal();
-        journal.FeatureSelection(feature);
+        }
+           
+        if (userSelection == "1" || userSelection == "2" || userSelection == "3" || userSelection == "4" || userSelection == "5")
+        {
+            int feature = Convert.ToInt32(userSelection);
+            Journal journal = new Journal();
+            journal.FeatureSelection(feature);
+        }
+        else
+        {
+            Console.WriteLine("Please enter a valid number from 1-5");
+        }
+
         }
         while (x == 0);
     }

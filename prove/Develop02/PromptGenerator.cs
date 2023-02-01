@@ -8,7 +8,7 @@ public class PromptGenerator
     {
         //Entries entries = new Entries();
 
-        int x = 0;
+        //int x = 0;
 
         List<string> _promptQuestions = new List<string>()
         {
@@ -39,7 +39,7 @@ public class PromptGenerator
                 _journalEntry = userReply 
             });
             
-        entries.JournalEntry();
+            entries.JournalEntry();
         }
         /*
         entries._entryDate = theCurrentTime.ToString("MM/dd/yyyy");

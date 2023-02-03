@@ -1,5 +1,5 @@
 using System.IO;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.Dynamic;
 //TODO fix system namespace
 /*
@@ -93,8 +93,11 @@ public class File
     //This is the user created file name
     public string userCreatedFileName = "";
 
+    //This is the variable to store the user created file name
+    public string _userCreatedFileName = "";
+    
     //This is the user loaded file name
-    List<string> _userLoadedFileName = new List<string>();
+    public List<File> _userLoadedFileName = new List<File>();
     public string userLoadedFileName = "";
 
     //This is the boolean to check if the user is working on a loaded file
@@ -127,6 +130,7 @@ public class File
             workingOnLoadFile = true;
             userLoadedFileName = fileName;
             Console.WriteLine($"{workingOnLoadFile} {userLoadedFileName}");
+            Display(fileName);
         }
         else
         {
@@ -140,12 +144,12 @@ public class File
     }
 
     //TODO fix the display method to display the correct file selected by the user.
-    public void Display()
+    public void Display(string fileName)
     {
       if (workingOnLoadFile != true)
       {
         File file = new File();
-        string newPath = Path.GetFullPath(Path.Combine(path, _userLoadedFileName));
+        string newPath = Path.GetFullPath(Path.Combine(path, fileName));
         string[] lines = System.IO.File.ReadAllLines($"{newPath}");
         foreach (string line in lines)
         {

@@ -41,14 +41,6 @@ public class PromptGenerator
             
             entries.JournalEntry();
         }
-        /*
-        entries._entryDate = theCurrentTime.ToString("MM/dd/yyyy");
-        entries._promptQuestion = question;
-        entries._journalEntry = userReply;
-        
-        entries.JournalEntry();
-        */
-
 
     }
 

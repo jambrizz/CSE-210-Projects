@@ -13,7 +13,7 @@ public class Journal
 
         if (_featureSelection == 1)
         {
-            
+            file.Display();
         }
         else if (_featureSelection == 2)
         {

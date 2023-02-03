@@ -130,7 +130,7 @@ public class File
             workingOnLoadFile = true;
             userLoadedFileName = fileName;
             Console.WriteLine($"{workingOnLoadFile} {userLoadedFileName}");
-            Display(fileName);
+            Display();
         }
         else
         {
@@ -144,25 +144,13 @@ public class File
     }
 
     //TODO fix the display method to display the correct file selected by the user.
-    public void Display(string fileName)
+    public void Display()
     {
-      if (workingOnLoadFile != true)
-      {
-        File file = new File();
-        string newPath = Path.GetFullPath(Path.Combine(path, fileName));
-        string[] lines = System.IO.File.ReadAllLines($"{newPath}");
-        foreach (string line in lines)
-        {
-          Console.WriteLine(line);
-        }  
-      }
-      else
-      {
         string[] lines = System.IO.File.ReadAllLines($"{_fileName}");
         foreach (string line in lines)
         {
           Console.WriteLine(line);
         }  
-      }
+      
     }
 }

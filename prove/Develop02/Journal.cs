@@ -25,7 +25,7 @@ public class Journal
         }
         else if (_featureSelection == 4)
         {
-            Console.WriteLine("Save");
+            file.SaveFile();
         }
         else if (_featureSelection == 5)
         {

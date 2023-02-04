@@ -35,15 +35,5 @@ public class Entries
             }
                
         }
-        
-        /*
-        for(int i = 0; i < _tempJournalEntry.Count; i++)
-        {
-            using (StreamWriter outputFile = new StreamWriter(file._fileName, true))
-            {
-                outputFile.WriteLine($"{_tempJournalEntry[i]._entryDate}\n{_tempJournalEntry[i]._promptQuestion}\n{_tempJournalEntry[i]._journalEntry}\n");
-            }
-        }
-        */
     }
 }

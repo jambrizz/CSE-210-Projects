@@ -6,10 +6,7 @@ public class PromptGenerator
     
     public void QuestionPrompt(int _promptNumber)
     {
-        //Entries entries = new Entries();
-
-        //int x = 0;
-
+        //This is the list of questions that will be randomly selected
         List<string> _promptQuestions = new List<string>()
         {
             "What was your highlight of this day?",
@@ -27,6 +24,7 @@ public class PromptGenerator
         Console.WriteLine($"{question}");
         string userReply = Console.ReadLine();
 
+        //This is the method to add the user's response to the list of entries if the user enters a response
         if (userReply != "")
         {
             Entries entries = new Entries();
@@ -43,7 +41,7 @@ public class PromptGenerator
         }
 
     }
-
+    //This is the method to generate a random number that will be used to select a question from the list
     public void RandomNumber()
     {
         Random random = new Random();

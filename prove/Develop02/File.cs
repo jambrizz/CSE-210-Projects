@@ -9,7 +9,7 @@ public class File
 
     //This is the test file name to switch between files to test the LoadFile() method
     public string _testFileName = "Test.txt";
-
+    //This is the path to the file
     public string path = @"prove\Develop02\";
 
     //This is the user created file name
@@ -20,6 +20,8 @@ public class File
     
     //This is the user loaded file name
     public List<File> _userLoadedFileName = new List<File>();
+    
+    //This is the variable to store the user loaded file name
     public string userLoadedFileName = "";
 
     //This is the boolean to check if the user is working on a loaded file
@@ -27,8 +29,7 @@ public class File
     //if true then the user is working on a loaded file
     public bool workingOnLoadFile = false;
 
-    //string[] lines = System.IO.File.ReadAllLines("Journal.txt");
-
+    //This method creates a new file
     public void SaveFile()
     {
         Console.WriteLine("Please enter a name for your file, don't forget the .txt at the end");
@@ -39,7 +40,7 @@ public class File
             
         }
     }
-
+    //This method loads a file and checks if it exists and if it does it saves the file name to a variable to create a path to the file later
     public void LoadFile()
     {
         //File file = new File();
@@ -60,12 +61,7 @@ public class File
         }
     }
 
-    public void CreateFileName()
-    {
-        
-    }
-
-    //TODO fix the display method to display the correct file selected by the user.
+    //This method displays the file
     public void Display()
     {
         string[] lines = System.IO.File.ReadAllLines($"{_fileName}");

@@ -10,26 +10,31 @@ public class Journal
         PromptGenerator prompt = new PromptGenerator();
         File file = new File();
 
-
+        //This is the feature selection for the user
         if (_featureSelection == 1)
         {
-            
+            //This is to display the fournal entries
+            file.Display();
         }
         else if (_featureSelection == 2)
         {
+            //This is to generate a random prompt to ask the user for a response to save to the journal
             prompt.RandomNumber();
         }
         else if (_featureSelection == 3)
         {
+            //This is to load a file
             file.LoadFile();
         }
         else if (_featureSelection == 4)
         {
-            Console.WriteLine("Save");
+            //This is to save a file
+            file.SaveFile();
         }
         else if (_featureSelection == 5)
         {
-            Console.WriteLine("Quit");
+            //This is to quit the program
+            Console.WriteLine("Thank you for using the Journal App, See you next time!");
         }
         else
         {

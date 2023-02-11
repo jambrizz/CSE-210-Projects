@@ -1,8 +1,21 @@
 using System;
 
+//Word - Keeps track of a single word and whether it is shown or hidden.
+
 public class Word
 {
     private List<int> _savedIndexes = new List<int>();
+
+    private string[] word = {
+        "This",
+        "is",
+        "a",
+        "test"
+    };
+
+    private int[] hiddenWord = {
+        
+    };
 
     public void Words()
     {

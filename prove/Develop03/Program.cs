@@ -9,6 +9,9 @@ class Program
 
         do
         {
+            Word word = new Word();
+            
+            /*
             Console.WriteLine("Scripture Mermorization App");
             Console.WriteLine("To start the program type start and press enter");
             Console.WriteLine("To quit the program type quit and press enter");
@@ -27,7 +30,7 @@ class Program
             {
                 Console.WriteLine("Invalid input");
             }
-
+            */
         }
         while (runProgram == true);
     }

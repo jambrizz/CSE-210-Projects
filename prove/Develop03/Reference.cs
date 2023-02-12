@@ -5,39 +5,36 @@ using System.Collections.Generic; // for Lists
 
 public class Reference
 {
-    private string _book;
-   /*
+    private string _books;
+   
     private List <string> books = new List <string>
      {
-        "Philippians",
-        "Joshua",
-        "John"
+        "Philippians"
      };
-   */
-    private int _chapter;
-   /*
-    private List <int> chapter = new List <int>
+   
+    private string _chapter;
+   
+    private List <string> chapter = new List <string>
      {
-        4, // Philippians
-        1, // Joshua
-        3, // John
+        "4" // Philippians
      };
-   */ 
-    private int _verse;
-   /*
+    private string _verse;
+   
     private List <string> verse = new List <string>
      {
-        "13: I can do all things through Christ which strengtheneth me.", // Philippians
-        "9: Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.", // Joshua
-        "16: For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.", // John
+        "13" // Philippians
      };
-   */
-    public Reference()
+   
+    public string GetReference()
     {
-
+      _books = books[0];
+      _chapter = chapter[0];
+      _verse = verse[0];
+      string message = $"{_books} {_chapter}:{_verse}";
+      return message;
     }
 
-    public Reference(int amountOfVerses)
+    public Reference()
     {
 
     }

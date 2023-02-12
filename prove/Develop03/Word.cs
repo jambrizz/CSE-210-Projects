@@ -5,12 +5,26 @@ using System;
 public class Word
 {
     private List<int> _savedIndexes = new List<int>();
+    
+    //TODO change public to private once testing is complete
+    public List<string> philC4V9List = new List<string>()
+    {
+        "I",
+        "can",
+        "do",
+        "all",
+        "things",
+        "through", 
+        "Christ", 
+        "which",
+        "strengtheneth",
+        "me."
+    };
 
-    private string[] word = {
-        "This",
-        "is",
-        "a",
-        "test"
+    //TODO change public to private once testing is complete
+    public List<string> multiple = new List<string>()
+    {
+        
     };
 
     private int[] hiddenWord = {

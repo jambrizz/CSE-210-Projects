@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -9,8 +10,25 @@ class Program
 
         do
         {
-            Word word = new Word();
+            //Word word = new Word();
+            Reference reference = new Reference();
+            Console.Write($"{reference.GetReference()}");
+            /*
+            for (int i = 0; i < word.philC4V9List.Count; i++)
+            {
+                Console.Write($"{word.philC4V9List[i]}" + " ");
+            }
+            */
+            runProgram = false;
             
+
+            /*
+            for (int i = 0; i < word.multiple.Length; i++)
+            {
+                Console.Write($"{word.multiple[i]}" + " ");
+            }
+            runProgram = false;
+            */
             /*
             Console.WriteLine("Scripture Mermorization App");
             Console.WriteLine("To start the program type start and press enter");

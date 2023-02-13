@@ -39,10 +39,6 @@ public class Word
     };
 
     //TODO change public to private once testing is complete
-    public List<string> multiple = new List<string>()
-    {
-        
-    };
 
     private int[] hiddenWord = {
         

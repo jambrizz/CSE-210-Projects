@@ -11,7 +11,7 @@ class Program
         do
         {
             //Word word = new Word();
-            Reference reference = new Reference();
+            Reference reference = new Reference("Philippians", "4", "13");
             Console.Write($"{reference.GetReference()}");
             /*
             for (int i = 0; i < word.philC4V9List.Count; i++)

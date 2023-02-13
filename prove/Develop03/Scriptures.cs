@@ -4,36 +4,36 @@ using System;
 
 public class Scriptures
 {
+    Word word = new Word();
     private List<Scriptures> _tempWords = new List<Scriptures>();
 
     private List<Scriptures> _wordIndex = new List<Scriptures>();
 
-    public string HideWords()
+    private string _verse;
+
+    public Scriptures(string verse)
     {
-        //TODO: fix the code below
-        string words = "";
-        return words;
+        _verse = verse;
     }
 
-    public void ScriptureText()
+    //TODO fix the method below
+    public string GetScriptures ()
     {
-
+        string verses = foreach (var item in _verse)
+        {
+            
+        };
+        return verses;
     }
 
-    public void CompletelyHidden()
+    //TODO fix the method below
+    public string GetHiddenScriptures()
     {
-
-    }
-
-    public void GetReference()
-    {
-
-    }
-
-    public string GetRenderedText()
-    {
-        //TODO: fix the code below
-        return "";
+        string verses = foreach (var item in _verse)
+        {
+            
+        };
+        return verses;
     }
 
 }

@@ -10,9 +10,11 @@ class Program
 
         do
         {
+            Scriptures scripture = new Scriptures();
             //Word word = new Word();
             Reference reference = new Reference("Philippians", "4", "13");
             Console.Write($"{reference.GetReference()}");
+            scripture.Verses();
             /*
             for (int i = 0; i < word.philC4V9List.Count; i++)
             {

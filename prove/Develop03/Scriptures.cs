@@ -10,30 +10,30 @@ public class Scriptures
     private List<Scriptures> _wordIndex = new List<Scriptures>();
 
     private string _verse;
+    /*
+    public Scriptures()
+    {
+    }
 
     public Scriptures(string verse)
     {
         _verse = verse;
     }
-
+    */
     //TODO fix the method below
-    public string GetScriptures ()
+    public void Verses()
     {
-        string verses = foreach (var item in _verse)
+        foreach (var item in word.philC4V9List)
         {
-            
-        };
-        return verses;
+            Console.Write(item + " ");
+        }
     }
 
     //TODO fix the method below
+    /*
     public string GetHiddenScriptures()
     {
-        string verses = foreach (var item in _verse)
-        {
-            
-        };
-        return verses;
+        return words;
     }
-
+    */
 }

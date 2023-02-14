@@ -34,7 +34,7 @@ public class Reference
    */
     public string GetReference()
     {
-      string message = $"{_books} {_chapter}:{_verse}";
+      string message = $"{_books} {_chapter}:{_verse} ";
       return message;
     }
 

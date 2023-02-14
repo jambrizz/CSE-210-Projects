@@ -20,7 +20,7 @@ public class Scriptures
         _verse = verse;
     }
     */
-    //TODO fix the method below
+    //TODO fix the method below so that it is soft coded
     public void Verses()
     {
         foreach (var item in word.philC4V9List)

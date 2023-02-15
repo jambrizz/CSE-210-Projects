@@ -4,6 +4,7 @@ using System;
 
 public class Word
 {
+    private int _length;
     private List<int> _savedIndexes = new List<int>();
     
     //TODO change public to private once testing is complete
@@ -44,36 +45,19 @@ public class Word
         
     };
 
-    public void Words()
+    //TODO need to test this method
+    public int RandomNumberGenerator(int count)
     {
-
+        Random random = new Random();
+        int number = random.Next(0, count);
+        return number;
     }
 
-    public void Hide()
+    //TODO need to test this method
+    internal object wordCount(List<string> list)
     {
-
-    }
-
-    public void Show()
-    {
-
-    }
-
-    public string GetWord()
-    {
-        //TODO fix the return below
-        return "test";
-    }
-
-    public string GetHiddenWord()
-    {
-        //TODO fix the return below
-        return "test";
-    }
-
-    public string SetWord()
-    {
-        //TODO fix the return below
-        return "test";
+        int count = list.Count();
+        RandomNumberGenerator(count);
+        return count;
     }
 }

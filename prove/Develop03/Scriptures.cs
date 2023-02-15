@@ -10,16 +10,7 @@ public class Scriptures
     private List<Scriptures> _wordIndex = new List<Scriptures>();
 
     private string _verse;
-    /*
-    public Scriptures()
-    {
-    }
-
-    public Scriptures(string verse)
-    {
-        _verse = verse;
-    }
-    */
+    
     //TODO fix the method below so that it is soft coded
     public void Verses()
     {
@@ -28,12 +19,14 @@ public class Scriptures
             Console.Write(item + " ");
         }
     }
-
-    //TODO fix the method below
-    /*
-    public string GetHiddenScriptures()
+    //TODO fix the method below so it is the principle code to be run
+    public object Verses2(List<string> list)
     {
-        return words;
+        foreach (var item in list)
+        {
+            Console.Write(item + " ");
+        }
+        return list;
     }
-    */
+    
 }

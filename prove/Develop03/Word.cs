@@ -4,6 +4,9 @@ using System;
 
 public class Word
 {
+    private int _length;
+
+    public List<int> listLenght = new List<int>();
     private List<int> _savedIndexes = new List<int>();
     
     //TODO change public to private once testing is complete
@@ -40,40 +43,37 @@ public class Word
 
     //TODO change public to private once testing is complete
 
-    private int[] hiddenWord = {
+    public List<int> hiddenWords = new List<int>()
+    {};
+
+    //TODO need to test this method
+
+    public void pickThreeWords()
+    {
+        for (int i = 0; i <= 3; i++)
+        {
+            int number = RandomNumberGenerator();
+            //i++;
+        }
         
-    };
-
-    public void Words()
-    {
-
     }
 
-    public void Hide()
+    public int RandomNumberGenerator()
     {
-
+        Random random = new Random();
+        int number = random.Next(0, listLenght[0]);
+        //Console.WriteLine(number);
+        //Console.WriteLine($"{listLenght[0]}");
+        //hiddenWords.Add(number);
+        return number;
     }
 
-    public void Show()
+    //TODO need to test this method
+    internal object wordCount(List<string> list)
     {
-
-    }
-
-    public string GetWord()
-    {
-        //TODO fix the return below
-        return "test";
-    }
-
-    public string GetHiddenWord()
-    {
-        //TODO fix the return below
-        return "test";
-    }
-
-    public string SetWord()
-    {
-        //TODO fix the return below
-        return "test";
+        int count = list.Count();
+        listLenght.Add(count);
+        //RandomNumberGenerator(count);
+        return count;
     }
 }

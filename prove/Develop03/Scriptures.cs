@@ -4,28 +4,22 @@ using System;
 
 public class Scriptures
 {
-    Word word = new Word();
+
     private List<Scriptures> _tempWords = new List<Scriptures>();
 
     private List<Scriptures> _wordIndex = new List<Scriptures>();
 
     private string _verse;
     
-    //TODO fix the method below so that it is soft coded
-    public void Verses()
-    {
-        foreach (var item in word.philC4V9List)
-        {
-            Console.Write(item + " ");
-        }
-    }
     //TODO fix the method below so it is the principle code to be run
-    public object Verses2(List<string> list)
+    public object Verses(List<string> list)
     {
+        Word word = new Word();
         foreach (var item in list)
         {
             Console.Write(item + " ");
         }
+        word.wordCount(list);
         return list;
     }
     

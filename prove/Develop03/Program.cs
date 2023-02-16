@@ -14,8 +14,12 @@ class Program
             Word word = new Word();
             Reference reference = new Reference("Philippians", "4", "13");
             Console.Write($"{reference.GetReference()}");
-            scripture.Verses2(word.philC4V9List);
-            Console.WriteLine($"{word.wordCount(word.philC4V9List)}");
+            scripture.Verses(word.philC4V9List);
+            word.wordCount(word.philC4V9List);
+            //Console.WriteLine($"{word.listLenght[0]}");
+            //Console.WriteLine($"{word.wordCount(word.philC4V9List)}");
+            //Console.WriteLine($"{word.wordCount(word.almaC7V11and12)}");
+            //Console.WriteLine($"{word.RandomNumberGenerator()}"); }")
            
             runProgram = false;
         

@@ -16,6 +16,15 @@ class Program
             Console.Write($"{reference.GetReference()}");
             scripture.Verses(word.philC4V9List);
             word.wordCount(word.philC4V9List);
+            word.pickThreeWords();
+            word.pickThreeWords();
+            word.pickThreeWords();
+            //word.pickThreeWords();
+            //word.pickThreeWords();
+            foreach (int i in word.hiddenWords)
+            {
+                Console.WriteLine($"{i}");
+            }
             //Console.WriteLine($"{word.listLenght[0]}");
             //Console.WriteLine($"{word.wordCount(word.philC4V9List)}");
             //Console.WriteLine($"{word.wordCount(word.almaC7V11and12)}");

@@ -8,6 +8,9 @@ public class Word
 
     public List<int> listLenght = new List<int>();
     private List<int> _savedIndexes = new List<int>();
+
+    public List<int> hiddenWords = new List<int>()
+    {};
     
     //TODO change public to private once testing is complete
     public List<string> philC4V9List = new List<string>()
@@ -41,19 +44,28 @@ public class Word
         "And", "he", "shall", "go", "forth", "suffering", "pains", "and", "afflictions", "and", "temptations", "of", "every", "kind;", "and", "this", "that", "the", "word", "might", "be", "fulfilled", "which", "saith", "he", "will", "take", "upon", "him", "the", "pains", "and", "the", "sicknesses", "of", "his", "people.", "And", "he", "will", "upon", "him", "death,", "that", "he", "may", "loose", "the", "bands", "of", "death", "which", "bind", "his", "people;", "and", "he", "will", "take", "upon", "him", "their", "infirmities,", "that", "his", "bowels", "may", "be", "filled", "with", "mercy,", "according", "to", "the", "flesh,", "how", "to", "succor", "his", "people", "according", "to", "their", "infirmities." 
     };
 
-    //TODO change public to private once testing is complete
 
-    public List<int> hiddenWords = new List<int>()
-    {};
 
     //TODO need to test this method
 
     public void pickThreeWords()
     {
-        for (int i = 0; i <= 3; i++)
+        for (int i = 0; i < 3;)
         {
             int number = RandomNumberGenerator();
-            //i++;
+            if(hiddenWords.Contains(number) == false)
+            {
+                hiddenWords.Add(number);
+                i++;
+            }
+            /*
+            bool index = hiddenWords.Contains(number);
+            if(index == false)
+            {
+                hiddenWords.Add(number);
+                i++;
+            }
+            */
         }
         
     }

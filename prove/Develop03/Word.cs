@@ -1,5 +1,5 @@
 using System;
-
+using System.Collections.Generic; // for Lists
 //Word - Keeps track of a single word and whether it is shown or hidden.
 
 public class Word
@@ -58,14 +58,10 @@ public class Word
                 hiddenWords.Add(number);
                 i++;
             }
-            /*
-            bool index = hiddenWords.Contains(number);
-            if(index == false)
+            if (hiddenWords.Count == listLenght[0])
             {
-                hiddenWords.Add(number);
-                i++;
+                break;
             }
-            */
         }
         
     }
@@ -74,18 +70,13 @@ public class Word
     {
         Random random = new Random();
         int number = random.Next(0, listLenght[0]);
-        //Console.WriteLine(number);
-        //Console.WriteLine($"{listLenght[0]}");
-        //hiddenWords.Add(number);
         return number;
     }
 
-    //TODO need to test this method
     internal object wordCount(List<string> list)
     {
         int count = list.Count();
         listLenght.Add(count);
-        //RandomNumberGenerator(count);
         return count;
     }
 }

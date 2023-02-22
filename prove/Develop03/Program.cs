@@ -8,10 +8,9 @@ class Program
     {
         for (int i = 0; i < 1; i++)
         {
-            Console.Clear();
             Scriptures scripture = new Scriptures();
             Word word = new Word();
-            Console.WriteLine("Welcome to the Scripture Memorization App!");
+            Console.WriteLine("\n" + "Welcome to the Scripture Memorization App!");
             Console.WriteLine("Please Select an Option to Load a scripture to practice:");
             Console.WriteLine("1. Philippians 4:13");
             Console.WriteLine("2. 1 Corinthians 16: 14");
@@ -20,6 +19,7 @@ class Program
 
             if(selection == 1)
             {
+                Console.Clear();
                 Reference reference = new Reference("Philippians", "4", "13");
                 string scriptRef = reference.GetReference();
                 scripture.Verses(scriptRef, word.philC4V9List);
@@ -58,6 +58,7 @@ class Program
                 while (runProgram == true);
             } else if(selection == 2)
             {
+                Console.Clear();
                 Reference reference = new Reference("1 Corinthians", "16", "14");
                 string scriptRef = reference.GetReference();
                 scripture.Verses(scriptRef, word.firstCorinthC16V14List);
@@ -96,6 +97,7 @@ class Program
                 while (runProgram == true);
             } else if(selection == 3)
             {
+                Console.Clear();
                 Reference reference = new Reference("Alma", "7", "11-12");
                 string scriptRef = reference.GetReference();
                 scripture.Verses(scriptRef, word.almaC7V11and12);
@@ -134,11 +136,10 @@ class Program
                 while (runProgram == true);
             } else
             {
-                Console.WriteLine("Please enter a valid option.");
+                Console.WriteLine("\n" + "Please enter a valid option.");
+                i--;
             }
-
-            //fix this below
-            //i++;          
+      
             
         
         }

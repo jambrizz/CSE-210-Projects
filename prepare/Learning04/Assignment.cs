@@ -10,4 +10,14 @@ public class Assignment
     {
         return $"Student name: {_studentName} Topic: {_topic}";
     }
+
+    public void SetStudentName(string studentName)
+    {
+        _studentName = studentName;
+    }
+
+    public void SetTopic(string topic)
+    {
+        _topic = topic;
+    }
 }

@@ -6,6 +6,11 @@ public class Assignment
 
     protected string _topic;
 
+    public string GetStudentName()
+    {
+        return $"by {_studentName}";
+    }
+
     public string GetSummary()
     {
         return $"Student name: {_studentName} Topic: {_topic}";
@@ -18,6 +23,12 @@ public class Assignment
 
     public void SetTopic(string topic)
     {
+        _topic = topic;
+    }
+
+    public void SetAssignment(string studentName, string topic)
+    {
+        _studentName = studentName;
         _topic = topic;
     }
 }

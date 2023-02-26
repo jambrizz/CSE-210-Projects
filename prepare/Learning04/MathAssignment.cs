@@ -10,4 +10,10 @@ public class MathAssignment : Assignment
     {
         return $"Textbook section: {_textbookSection} Problems: {_problems}";
     }
+
+    public void SetMathAssignment(string textbookSection, string problems)
+    {
+        _textbookSection = textbookSection;
+        _problems = problems;
+    }
 }

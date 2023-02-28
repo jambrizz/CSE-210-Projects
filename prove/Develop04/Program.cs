@@ -21,6 +21,8 @@ class Program
             if (selection == 1)
             {
                 Console.WriteLine("You have selected the Breathing Activity \n");
+                Animation animation = new Animation();
+                animation.AnimationDisplay();
             }
             else if (selection == 2)
             {

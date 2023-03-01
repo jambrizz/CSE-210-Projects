@@ -23,6 +23,8 @@ class Program
                 Console.WriteLine("You have selected the Breathing Activity \n");
                 Animation animation = new Animation();
                 animation.AnimationDisplay();
+                Breathing breathing = new Breathing();
+                breathing.WelcomeBreathing();
             }
             else if (selection == 2)
             {

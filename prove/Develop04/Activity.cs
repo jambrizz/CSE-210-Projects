@@ -38,12 +38,17 @@ public class Activity
 
     public void UserTimeSelection()
     {
-
+        
     }
 
-    public void GetSeconds()
+    public int GetSeconds()
     {
+        return _seconds;
+    }
 
+    public void SetSeconds(int seconds)
+    {
+        _seconds = seconds;
     }
 
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Checklist : Goal
 {
-    private string GoalItem;
+    private string _GoalItem;
 
      private int points;
 
@@ -15,9 +15,12 @@ public class Checklist : Goal
 
      private int overallCount;
 
-     public Checklist(int score) : base(score)
+     public Checklist(string goal, string description, int score) : base(goal, description, score)
      {
-         status = false;
+        status = false;
+        _GoalItem = goal;
+        _score = score;
+        _goalDescription = description;
      }
 
     // todo fix the method below
@@ -28,7 +31,7 @@ public class Checklist : Goal
 
      public override string RecordEvent()
      {
-         return GoalItem;
+         return _GoalItem;
      }
 
      public override bool IsComplete()

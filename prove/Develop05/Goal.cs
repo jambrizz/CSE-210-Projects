@@ -5,7 +5,9 @@ public abstract class Goal
 {
     protected int _score;
 
-    protected string GoalItem;
+    protected string _goalItem;
+
+    protected string _goalDescription;
 
     List<string> goals = new List<string>();
 
@@ -14,11 +16,13 @@ public abstract class Goal
         return goals;
     }
 
-    public Goal(int score)
+    public Goal(string goalItem, string description, int score)
     {
-
+        _goalItem = goalItem;
+        _goalDescription = description;
+        _score = score;
     }
-
+    
     public int GetScore()
     {
         return _score;

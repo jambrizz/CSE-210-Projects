@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-public class Options : Goal
+public class Options
 {
     private string _fileName;
 
-    public Options(int score) : base(score)
+    public Options(int score)
     {
     }
 
@@ -19,8 +19,10 @@ public class Options : Goal
         
     }
 
+    /*
     public override string NewGoal()
     {
         return "";
     }
+    */
 }

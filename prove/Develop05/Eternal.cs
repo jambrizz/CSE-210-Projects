@@ -7,11 +7,14 @@ public class Eternal : Goal
 
     private int points;
 
-    private bool Status;
+    private bool status;
 
-    public Eternal(int score) : base(score)
+    public Eternal(string goal, string description, int score) : base(goal, description, score)
     {
-        Status = false;
+        status = false;
+        _GoalItem = goal;
+        _score = score;
+        _goalDescription = description;
     }
 
     public override int CalculateScore()
@@ -21,12 +24,12 @@ public class Eternal : Goal
 
     public override string RecordEvent()
     {
-        return GoalItem;
+        return _GoalItem;
     }
 
     public override bool IsComplete()
     {
-        return Status;
+        return status;
     }
 
     public override string NewGoal()

@@ -9,9 +9,12 @@ public class Simple : Goal
 
     private bool status;
 
-    public Simple(int score) : base(score)
+    public Simple(string goal, string description, int score) : base(goal, description, score)
     {
         status = false;
+        _GoalItem = goal;
+        _score = score;
+        _goalDescription = description;
     }
 
     public override int CalculateScore()
@@ -21,7 +24,7 @@ public class Simple : Goal
 
     public override string RecordEvent()
     {
-        return GoalItem;
+        return _GoalItem;
     }
 
     // todo fix the method below

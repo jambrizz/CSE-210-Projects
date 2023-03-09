@@ -22,11 +22,18 @@ public class Simple : Goal
         return points;
     }
 
-    public override string RecordEvent()
+    public override string NewGoal()
     {
-        return _GoalItem;
+        throw new NotImplementedException();
     }
 
+    //TODO test this method
+    public override string RecordEvent()
+    {
+        string goal = $"[ ] {_goalItem} ({_goalDescription})";
+        return goal;
+    }
+    /*
     // todo fix the method below
     public override bool IsComplete()
     {
@@ -37,4 +44,5 @@ public class Simple : Goal
     {
         return "";
     }
+    */
 }

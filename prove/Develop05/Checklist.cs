@@ -28,12 +28,12 @@ public class Checklist : Goal
      {
          return points;
      }
-
+    /*
      public override string RecordEvent()
      {
          return _GoalItem;
      }
-
+    */
      public override bool IsComplete()
      {
          return status;

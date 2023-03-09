@@ -38,10 +38,12 @@ public abstract class Goal
         return 0;
     }
 
-
+    //TODO test this method
     public virtual string RecordEvent()
     {
-        return "";
+        string goal= "";
+        goals.Add(goal);
+        return goal;
     }
 
     public virtual bool IsComplete()

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -53,7 +54,7 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("You did not select a valid choice");
+                    Console.WriteLine("You did not select a valid choice please try again");
                 }
             }
             else if(selection == 2)

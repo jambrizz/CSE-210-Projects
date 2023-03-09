@@ -31,6 +31,7 @@ public class Simple : Goal
     public override string RecordEvent()
     {
         string goal = $"[ ] {_goalItem} ({_goalDescription})";
+        goals.Add(goal);
         return goal;
     }
     /*

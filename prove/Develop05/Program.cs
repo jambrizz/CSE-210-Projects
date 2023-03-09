@@ -43,6 +43,9 @@ class Program
                 if (goalSelection == 1)
                 {
                     Simple simple = new Simple(goalName, goalDescription, goalPoints);
+                    simple.RecordEvent();
+                    //TODO fix the syntax of the line below
+                    simple.GetGoalsList();
                 }
                 else if (goalSelection == 2)
                 {

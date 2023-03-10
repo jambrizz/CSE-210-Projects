@@ -5,9 +5,11 @@ class Program
 {
     static void Main(string[] args)
     {
+        List<string> goals = new List<string>();
         bool programRun = true;
         do
         {
+            //List<string> goals = new List<string>();
             //Goal goal = new Goal(0);
             Console.WriteLine($"You have X points");
             Console.WriteLine("Welcome to the Eternal Quest Program!");
@@ -24,45 +26,70 @@ class Program
 
             if(selection == 1)
             {
-                //TODO Create a loop to handle user no selecting a valid choice
+                Console.Clear();
                 Console.WriteLine("The types of Goals are:");
                 Console.WriteLine("1. Simple Goal");
                 Console.WriteLine("2. Eternal Goal");
                 Console.WriteLine("3. Checklist Goal");
                 Console.WriteLine("What type of goal would you like to create? ");
                 string goalType = Console.ReadLine();
-                int goalSelection = Convert.ToInt32(goalType);
-                Console.Write("What is the name of your goal? ");
-                string goalName = Console.ReadLine();
-                Console.Write("What is a short description of your goal? ");
-                string goalDescription = Console.ReadLine();
-                Console.Write("What is the amount of points associated with this goal? ");
-                int goalPoints = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine($"\n {goalSelection}, {goalName}, {goalDescription}, {goalPoints}\n");
-                //Simple simple = new Simple(goalName, goalDescription, goalPoints);
-                if (goalSelection == 1)
+                int goalSelectionType = Convert.ToInt32(goalType);
+                
+                if(goalSelectionType == 1)
                 {
+                    Console.Clear();
+                    Console.Write("What is the name of your goal? ");
+                    string goalName = Console.ReadLine();
+                    Console.Write("What is a short description of your goal? ");
+                    string goalDescription = Console.ReadLine();
+                    Console.Write("What is the amount of points associated with this goal? ");
+                    int goalPoints = Convert.ToInt32(Console.ReadLine());
+                    
                     Simple simple = new Simple(goalName, goalDescription, goalPoints);
-                    simple.RecordEvent();
-                    //TODO fix the syntax of the line below
-                    simple.GetGoalsList();
+                    goals.Add(simple.RecordGoal());
+                    Console.Clear(); 
                 }
-                else if (goalSelection == 2)
+                else if(goalSelectionType == 2)
                 {
+                    Console.Clear();
+                    Console.Write("What is the name of your goal? ");
+                    string goalName = Console.ReadLine();
+                    Console.Write("What is a short description of your goal? ");
+                    string goalDescription = Console.ReadLine();
+                    Console.Write("What is the amount of points associated with this goal? ");
+                    int goalPoints = Convert.ToInt32(Console.ReadLine());
+                    
                     Eternal eternal = new Eternal(goalName, goalDescription, goalPoints);
+                    goals.Add(eternal.RecordGoal());
+                    Console.Clear();
                 }
-                else if (goalSelection == 3)
+                //TODO fix the checklist goal
+                else if(goalSelectionType == 3)
                 {
+                    Console.Clear();
+                    Console.Write("What is the name of your goal? ");
+                    string goalName = Console.ReadLine();
+                    Console.Write("What is a short description of your goal? ");
+                    string goalDescription = Console.ReadLine();
+                    Console.Write("What is the amount of points associated with this goal? ");
+                    int goalPoints = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+                    
                     Checklist checklist = new Checklist(goalName, goalDescription, goalPoints);
                 }
                 else
                 {
-                    Console.WriteLine("You did not select a valid choice please try again");
+                    Console.WriteLine("\n You did not select a valid choice please try again \n");
                 }
             }
             else if(selection == 2)
             {
-                Console.WriteLine("\n List all goals \n");
+                Console.WriteLine("\n List of all goals \n");
+                foreach (var item in goals)
+                {
+                    Console.WriteLine(item);
+                };
+                Console.WriteLine("\n"); 
             }
             else if(selection == 3)
             {

@@ -9,7 +9,7 @@ public abstract class Goal
 
     protected string _goalDescription;
 
-    protected List<string> goals = new List<string>();
+    //public List<string> goals = new List<string>();
 
     public object GetGoalsList(List<string> list)
     {
@@ -43,7 +43,7 @@ public abstract class Goal
     }
 
     //TODO test this method
-    public virtual string RecordEvent()
+    public virtual string RecordGoal()
     {
         return "";
     }
@@ -51,11 +51,6 @@ public abstract class Goal
     public virtual bool IsComplete()
     {
         return true;
-    }
-
-    public void SetListGoals(string GoalItem)
-    {
-        goals.Add(GoalItem);
     }
 
     public abstract string NewGoal();

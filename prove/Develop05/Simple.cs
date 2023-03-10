@@ -3,23 +3,23 @@ using System.Collections.Generic;
 
 public class Simple : Goal
 {
-    private string _GoalItem;
+    //private string _goalItem;
 
-    private int points;
+    //private int points;
 
     private bool status;
 
     public Simple(string goal, string description, int score) : base(goal, description, score)
     {
-        status = false;
-        _GoalItem = goal;
+        //status = false;
+        _goalItem = goal;
         _score = score;
         _goalDescription = description;
     }
 
     public override int CalculateScore()
     {
-        return points;
+        return _score;
     }
 
     public override string NewGoal()
@@ -28,11 +28,10 @@ public class Simple : Goal
     }
 
     //TODO test this method
-    public override string RecordEvent()
+    public override string RecordGoal()
     {
-        string goal = $"[ ] {_goalItem} ({_goalDescription})";
-        goals.Add(goal);
-        return goal;
+        //string goal = $"[ ] {_goalItem} ({_goalDescription}: {_score} points)";
+        return $"[ ] {_goalItem} ({_goalDescription}): {_score} points";
     }
     /*
     // todo fix the method below

@@ -84,7 +84,7 @@ class Program
             }
             else if(selection == 2)
             {
-                Console.WriteLine("\n List of all goals \n");
+                //TODO need to fix this to only display the goals that are loaded or pending to save also add a feature to make sure the goal list is empty for the next time the program is run
                 foreach (var item in goals)
                 {
                     Console.WriteLine(item);
@@ -93,7 +93,10 @@ class Program
             }
             else if(selection == 3)
             {
-                Console.WriteLine("\n Save goals \n");
+                Console.Write("What is the filename for the goal file? ");
+                string fileName = Console.ReadLine();
+                Options options = new Options(fileName, goals);
+                
             }
             else if(selection == 4)
             {

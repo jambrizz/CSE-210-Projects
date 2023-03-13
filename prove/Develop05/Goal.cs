@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public abstract class Goal 
 {
-    protected int _score;
+    protected int _score = 0;
 
     protected string _goalItem;
 
@@ -26,7 +26,15 @@ public abstract class Goal
         _goalDescription = description;
         _score = score;
     }
-    
+
+    public Goal(int score)
+    {
+        _score = score;
+    }
+     public Goal()
+     {
+
+     }
     public int GetScore()
     {
         return _score;

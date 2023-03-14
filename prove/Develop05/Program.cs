@@ -38,6 +38,8 @@ class Program
                 if(goalSelectionType == 1)
                 {
                     Console.Clear();
+                    bool status = false;
+                    string goaltype = "Simple";
                     Console.Write("What is the name of your goal? ");
                     string goalName = Console.ReadLine();
                     Console.Write("What is a short description of your goal? ");
@@ -45,13 +47,15 @@ class Program
                     Console.Write("What is the amount of points associated with this goal? ");
                     int goalPoints = Convert.ToInt32(Console.ReadLine());
                     
-                    Simple simple = new Simple(goalName, goalDescription, goalPoints);
+                    Simple simple = new Simple(status, goalName, goalDescription, goalPoints, goaltype);
                     goals.Add(simple.RecordGoal());
                     Console.Clear(); 
                 }
                 else if(goalSelectionType == 2)
                 {
                     Console.Clear();
+                    bool status = false;
+                    string goaltype = "Eternal";
                     Console.Write("What is the name of your goal? ");
                     string goalName = Console.ReadLine();
                     Console.Write("What is a short description of your goal? ");
@@ -59,7 +63,7 @@ class Program
                     Console.Write("What is the amount of points associated with this goal? ");
                     int goalPoints = Convert.ToInt32(Console.ReadLine());
                     
-                    Eternal eternal = new Eternal(goalName, goalDescription, goalPoints);
+                    Eternal eternal = new Eternal(status, goalName, goalDescription, goalPoints, goaltype);
                     goals.Add(eternal.RecordGoal());
                     Console.Clear();
                 }
@@ -67,6 +71,9 @@ class Program
                 else if(goalSelectionType == 3)
                 {
                     Console.Clear();
+                    bool status = false;
+                    string goaltype = "Checklist";
+                    int completed = 0;
                     Console.Write("What is the name of your goal? ");
                     string goalName = Console.ReadLine();
                     Console.Write("What is a short description of your goal? ");
@@ -74,8 +81,13 @@ class Program
                     Console.Write("What is the amount of points associated with this goal? ");
                     int goalPoints = Convert.ToInt32(Console.ReadLine());
                     Console.Write("How many times does this goal need to be accomplished for a bonus? ");
+                    int overall = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("What is the bonus for accomplishing your goal that many times? ");
+                    int bonus = Convert.ToInt32(Console.ReadLine());
                     
-                    Checklist checklist = new Checklist(goalName, goalDescription, goalPoints);
+                    Checklist checklist = new Checklist(status, goalName, goalDescription, goalPoints, goaltype, completed, overall, bonus);
+                    goals.Add(checklist.RecordGoal());
+                    Console.Clear();
                 }
                 else
                 {
@@ -87,16 +99,17 @@ class Program
                 //TODO need to fix this to only display the goals that are loaded or pending to save also add a feature to make sure the goal list is empty for the next time the program is run
                 foreach (var item in goals)
                 {
-                    Console.WriteLine(item);
+                    Console.Write(goals.IndexOf(item) + 1 + ". ");
+                    Console.Write(item + "\n");
                 };
                 Console.WriteLine("\n"); 
             }
             else if(selection == 3)
             {
-                Console.Write("What is the filename for the goal file? ");
+                Console.Write("What is the filename for the goal file (don't forget to add .txt of your filename)? ");
                 string fileName = Console.ReadLine();
                 Options options = new Options(fileName, goals);
-                
+                goals.Clear();
             }
             else if(selection == 4)
             {

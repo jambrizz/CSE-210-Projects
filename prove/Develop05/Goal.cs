@@ -9,6 +9,16 @@ public abstract class Goal
 
     protected string _goalDescription;
 
+    protected string _goalType;
+
+    protected bool _status;
+
+    protected int _completed;
+
+    protected int _overall;
+
+    protected int _bonus;
+
     //public List<string> goals = new List<string>();
 
     public object GetGoalsList(List<string> list)
@@ -19,14 +29,29 @@ public abstract class Goal
         }
         return list;
     }
-
-    public Goal(string goalItem, string description, int score)
+    //This goal handles both simple and eternal goals
+    public Goal(bool status, string goalItem, string description, int score, string goaltype)
     {
+        _status = status;
         _goalItem = goalItem;
         _goalDescription = description;
         _score = score;
+        _goalType = goaltype;
     }
 
+    //This goal handles checklist goals
+    public Goal(bool status, string goalItem, string description, int score, string goaltype, int completed, int overall, int bonus)
+    {
+        _status = status;
+        _goalItem = goalItem;
+        _goalDescription = description;
+        _score = score;
+        _goalType = goaltype;
+        _completed = completed;
+        _overall = overall;
+        _bonus = bonus;
+
+    }
     public Goal(int score)
     {
         _score = score;

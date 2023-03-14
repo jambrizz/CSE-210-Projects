@@ -3,18 +3,16 @@ using System.Collections.Generic;
 
 public class Eternal : Goal
 {
-    //private string _GoalItem;
 
-    //private int points;
+    //private bool status;
 
-    private bool status;
-
-    public Eternal(string goal, string description, int score) : base(goal, description, score)
+    public Eternal(bool status, string goal, string description, int score, string goaltype) : base(status, goal, description, score, goaltype)
     {
-        status = false;
+        _status = status;
         _goalItem = goal;
         _score = score;
         _goalDescription = description;
+        _goalType = goaltype;
     }
 
     public override int CalculateScore()
@@ -24,14 +22,15 @@ public class Eternal : Goal
 
     public override string RecordGoal()
     {
-        return $"[ ] {_goalItem} ({_goalDescription}): {_score} points";
+        return $"{_goalType}:[ ] {_goalItem} ({_goalDescription}), {_score},{_status}";
     }
     
+    /*
     public override bool IsComplete()
     {
         return status;
     }
-
+    */
     public override string NewGoal()
     {
         return "";

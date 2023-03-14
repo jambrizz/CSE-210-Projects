@@ -2,19 +2,16 @@ using System;
 using System.Collections.Generic;
 
 public class Simple : Goal
-{
-    //private string _goalItem;
+{    
+    //private bool status;
 
-    //private int points;
-
-    private bool status;
-
-    public Simple(string goal, string description, int score) : base(goal, description, score)
+    public Simple(bool status, string goal, string description, int score, string goaltype) : base(status, goal, description, score, goaltype)
     {
-        //status = false;
+        _status = status;
         _goalItem = goal;
         _score = score;
         _goalDescription = description;
+        _goalType = goaltype;
     }
 
     public override int CalculateScore()
@@ -30,8 +27,7 @@ public class Simple : Goal
     //TODO test this method
     public override string RecordGoal()
     {
-        //string goal = $"[ ] {_goalItem} ({_goalDescription}: {_score} points)";
-        return $"[ ] {_goalItem} ({_goalDescription}): {_score} points";
+        return $"{_goalType}:[ ] {_goalItem} ({_goalDescription}), {_score},{_status}";
     }
     /*
     // todo fix the method below

@@ -9,8 +9,6 @@ class Program
         bool programRun = true;
         do
         {
-            //List<string> goals = new List<string>();
-            //Goal goal = new Goal(0);
             Console.WriteLine($"You have X points");
             Console.WriteLine("Welcome to the Eternal Quest Program!");
             Console.WriteLine("Menu Options:");
@@ -67,7 +65,6 @@ class Program
                     goals.Add(eternal.RecordGoal());
                     Console.Clear();
                 }
-                //TODO fix the checklist goal
                 else if(goalSelectionType == 3)
                 {
                     Console.Clear();
@@ -96,24 +93,47 @@ class Program
             }
             else if(selection == 2)
             {
-                //TODO need to fix this to only display the goals that are loaded or pending to save also add a feature to make sure the goal list is empty for the next time the program is run
+                Console.Clear();
+                //TODO update the removePartOfString so it handles object names that identify parts of the string that need to be removed.
+                string [] removePartOfString = {"Simple:", "Eternal:", "Checklist:", ",", "True", "False", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
                 foreach (var item in goals)
                 {
                     Console.Write(goals.IndexOf(item) + 1 + ". ");
-                    Console.Write(item + "\n");
+                    string words = item;
+                    foreach (var part in removePartOfString)
+                    {
+                        words = words.Replace(part, "");
+                    }
+                    Console.Write(words + "\n");
                 };
                 Console.WriteLine("\n"); 
             }
             else if(selection == 3)
-            {
+            {   
+                Console.Clear();
                 Console.Write("What is the filename for the goal file (don't forget to add .txt of your filename)? ");
                 string fileName = Console.ReadLine();
                 Options options = new Options(fileName, goals);
+                options.SaveGoals(fileName, goals);
                 goals.Clear();
             }
             else if(selection == 4)
             {
-                Console.WriteLine("\n Load goals \n");
+                //TODO fix the Load file so it does not display the first line of the file where we store the score as an empty option.
+                Console.Clear();
+                Console.Write("What is the filename for the goal file (don't forget to add .txt of your filename)? ");
+                string fileName = Console.ReadLine();
+                bool fileExists = System.IO.File.Exists(fileName);
+                if(fileExists == true)
+                {
+                    Options options = new Options(fileName, goals);
+                    options.LoadFile(fileName, goals);
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.WriteLine("The file you are trying to load does not exist \n");
+                }
             }
             else if(selection == 5)
             {
@@ -121,6 +141,7 @@ class Program
             }
             else if(selection == 6)
             {
+                //TODO add a feature were it checks if the goals List has any items in it and if it does it asks if you want to save the goals before exiting.
                 Console.WriteLine("\n Exit \n");
                 programRun = false;
                 Console.Clear();

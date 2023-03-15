@@ -23,6 +23,7 @@ public class Checklist : Goal
 
     // todo fix the method below
 
+    //TODO Change this to add details about the object ex. "Score: 10" to use this to access certain parts of the string in the txt file
     public override string RecordGoal()
     {
         return $"{_goalType}:[ ] {_goalItem} ({_goalDescription}), {_score}, {_bonus}, {_overall}, {_completed}, {_status}";

@@ -6,11 +6,12 @@ public class Options : Goal
 {
     private string _fileName;
 
+    private List<string> _list;
+
     public Options(string fileName, List<string> List)
     {
         _fileName = fileName;
-        SaveGoals(_fileName, List);
-        //_score = score;
+        _list = List;
     }
 
     public void SetFileName(string fileName)
@@ -18,21 +19,28 @@ public class Options : Goal
         _fileName = fileName;
     }
     
-    public void SaveGoals(string _fileName, List<string> List)
+    public void SaveGoals(string _fileName, List<string> _list)
     {
         using (StreamWriter outputFile = new StreamWriter(_fileName))
         {
             outputFile.WriteLine($"{GetScore()}");
-            foreach (var item in List)
+            foreach (var item in _list)
             {
                 outputFile.WriteLine(item);
             }
         }
     }
 
-    public void LoadFile()
+    public void LoadFile(string _fileName, List<string> List)
     {
-        
+        using (StreamReader inputFile = new StreamReader(_fileName))
+        {
+            string line;
+            while ((line = inputFile.ReadLine()) != null)
+            {
+                List.Add(line);
+            }
+        }
     }
 
     public override string NewGoal()

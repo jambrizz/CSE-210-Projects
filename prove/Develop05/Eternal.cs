@@ -20,6 +20,7 @@ public class Eternal : Goal
         return 0;
     }
 
+    //TODO Change this to add details about the object ex. "Score: 10" to use this to access certain parts of the string in the txt file
     public override string RecordGoal()
     {
         return $"{_goalType}:[ ] {_goalItem} ({_goalDescription}), {_score},{_status}";

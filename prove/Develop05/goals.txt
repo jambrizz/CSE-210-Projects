@@ -1,4 +1,4 @@
 0
-Simple:[ ] goal1 (test 1), 50,False
-Eternal:[ ] goal2 (test 2), 100,False
-Checklist:[ ] goal3 (test 3), 200, 1000, 3, 0, False
+Simple:[ ] Go for a walk (Take a walk at the park.), 50,False
+Eternal:[ ] Go to the temple (Visit the temple to do an ordinance.), 200,False
+Checklist:[ ] Read a new  book (Read a new book every two months.), 200, 6, 1000, 0, False

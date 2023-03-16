@@ -1,4 +1,4 @@
-0
-Simple:[ ] Go for a walk (Take a walk at the park.), 50,False
-Eternal:[ ] Go to the temple (Visit the temple to do an ordinance.), 200,False
-Checklist:[ ] Read a new  book (Read a new book every two months.), 200, 6, 1000, 0, False
+TotalScore:0
+Simple:[ ] Name:Go for a walk Description:(Go for a walk around the park with the dog.), Score:50, Status:False
+Eternal:[ ] Name:Visit the temple Description:(Go to the temple to do an ordinance.), Score:300, Status:False
+Checklist:[ ] Name:Read a book Description:(Read a new book every two months.), Score:150, Bonus:1000, Denominator:6, Numerator:0, Status:False

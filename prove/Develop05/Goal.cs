@@ -19,8 +19,6 @@ public abstract class Goal
 
     protected int _bonus;
 
-    //public List<string> goals = new List<string>();
-
     public object GetGoalsList(List<string> list)
     {
         foreach (var item in list)
@@ -58,8 +56,8 @@ public abstract class Goal
     }
      public Goal()
      {
-
      }
+    
     public int GetScore()
     {
         return _score;

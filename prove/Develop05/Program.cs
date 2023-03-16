@@ -93,20 +93,39 @@ class Program
             }
             else if(selection == 2)
             {
+                //TODO fix the display to handle either displaying the goals from the list after the intial load or from the txt file or from the list that already has goals in it.
+                Console.Clear();
+                if(goals.Count == 0)
+                {
+                    Console.WriteLine("You have no goals to display \n");
+                }
+                else
+                {
+                    Console.WriteLine(goals.Count);
+                }
+                /*
+                Options options = new Options(goals);
+                options.DisplayGoalsFromTxt(goals);
+                /*
                 Console.Clear();
                 //TODO update the removePartOfString so it handles object names that identify parts of the string that need to be removed.
-                string [] removePartOfString = {"Simple:", "Eternal:", "Checklist:", ",", "True", "False", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
-                foreach (var item in goals)
+                string [] removePartOfString = {"Simple:", "Eternal:", "Checklist:", "Name:", "Description:", "Score:", "Bonus:", "Denominator:", "Numerator:", "Status:", ",", "True", "False", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+
+                Console.WriteLine("\n");
+                for (int i = 1; i < goals.Count;)
                 {
-                    Console.Write(goals.IndexOf(item) + 1 + ". ");
-                    string words = item;
+                    Console.Write(i + ". ");
+                    string goalItem = goals[i];
                     foreach (var part in removePartOfString)
                     {
-                        words = words.Replace(part, "");
+                        goalItem = goalItem.Replace(part, "");
+                        //i++;
                     }
-                    Console.Write(words + "\n");
+                    i++;
+                    Console.Write(goalItem + "\n");
                 };
-                Console.WriteLine("\n"); 
+                Console.WriteLine("\n");
+                */ 
             }
             else if(selection == 3)
             {   

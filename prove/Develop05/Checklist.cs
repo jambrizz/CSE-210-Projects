@@ -28,6 +28,13 @@ public class Checklist : Goal
     {
         return $"{_goalType}:[ ] Name:{_goalItem} Description:({_goalDescription}), Score:{_score}, Bonus:{_bonus}, Denominator:{_overall}, Numerator:{_completed}, Status:{_status}";
     }
+
+    public override string RecordEvent(string line)
+    {
+        //TODO: work on creating a new line of string to add to the list
+        return "";
+    }
+
      public override int CalculateScore()
      {
          return points;

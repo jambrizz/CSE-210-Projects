@@ -29,6 +29,12 @@ public class Simple : Goal
     {
         return $"{_goalType}:[ ] Name:{_goalItem} Description:({_goalDescription}), Score:{_score}, Status:{_status}";
     }
+
+    public override string RecordEvent(string line)
+    {
+        //TODO: work on creating a new line of string to add to the list
+        return "";
+    }
     /*
     // todo fix the method below
     public override bool IsComplete()

@@ -89,11 +89,4 @@ public class Options : Goal
     {
         throw new NotImplementedException();
     }
-
-    /*
-    public override string NewGoal()
-    {
-        return "";
-    }
-    */
 }

@@ -19,6 +19,12 @@ public abstract class Goal
 
     protected int _bonus;
 
+    protected List<string> _list;
+
+    protected int _number;
+
+    protected string _line;
+
     public object GetGoalsList(List<string> list)
     {
         foreach (var item in list)
@@ -54,6 +60,7 @@ public abstract class Goal
     {
         _score = score;
     }
+       
      public Goal()
      {
      }
@@ -73,10 +80,14 @@ public abstract class Goal
         return 0;
     }
 
-    //TODO test this method
     public virtual string RecordGoal()
     {
         return "";
+    }
+
+    public virtual string RecordEvent(string line)
+    {
+        return line;
     }
 
     public virtual bool IsComplete()

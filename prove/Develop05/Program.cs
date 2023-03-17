@@ -156,7 +156,49 @@ class Program
             }
             else if(selection == 5)
             {
-                Console.WriteLine("\n Record event \n");
+                Console.Clear();
+                if (goals.Count == 0)
+                {
+                    Console.WriteLine("You have no goals to display, Please load a file or create a goal \n");
+                }
+                else
+                {
+                    Options options = new Options(goals);
+                    options.DisplayGoalsFromList(goals);
+                    Console.Write("\n Please enter the number of the goal you would like to record progress on: ");
+                    int itemSelected = Convert.ToInt32(Console.ReadLine());
+                    
+                    if(itemSelected > goals.Count)
+                    {
+                        Console.WriteLine("You did not select a valid choice \n");
+                    }
+                    else
+                    {
+                        
+                        string lineItem = goals[itemSelected];
+                        string type = lineItem.Substring(0, lineItem.IndexOf(":"));
+                        if(type == "Simple")
+                        {
+                            Console.WriteLine("You selected a simple goal \n");
+                            Console.WriteLine(lineItem);
+                        }
+                        else if(type == "Eternal")
+                        {
+                            Console.WriteLine("You selected an eternal goal \n");
+                            Console.WriteLine(lineItem);
+                        }
+                        else if(type == "Checklist")
+                        {
+                            Console.WriteLine("You selected a checklist goal \n");
+                            Console.WriteLine(lineItem);
+                        }
+                        else
+                        {
+                            Console.WriteLine("You did not select a valid choice \n");
+                        }
+                    }
+                    
+                }
             }
             else if(selection == 6)
             {
@@ -172,4 +214,5 @@ class Program
         }
         while (programRun == true);
     }
+
 }

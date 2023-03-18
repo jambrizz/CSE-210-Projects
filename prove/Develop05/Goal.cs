@@ -61,6 +61,11 @@ public abstract class Goal
         _score = score;
     }
        
+     public Goal(string line)
+     {
+         _line = line;
+     }
+
      public Goal()
      {
      }

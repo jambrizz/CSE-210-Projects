@@ -179,8 +179,12 @@ class Program
                         string type = lineItem.Substring(0, lineItem.IndexOf(":"));
                         if(type == "Simple")
                         {
-                            Console.WriteLine("You selected a simple goal \n");
-                            Console.WriteLine(lineItem);
+                            //TODO fix the simple goal so it updates the goal in the list.
+                            Simple simple = new Simple(lineItem);
+                            string updatedGoal = simple.RecordEvent(lineItem);
+                            goals.RemoveAt(itemSelected);
+
+                            //goals.Insert(itemSelected - 1, updatedGoal);
                         }
                         else if(type == "Eternal")
                         {

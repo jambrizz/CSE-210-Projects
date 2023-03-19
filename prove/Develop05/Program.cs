@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 class Program
 {
@@ -102,6 +104,9 @@ class Program
                 else
                 {
                     Console.WriteLine(goals.Count);
+                    Options options = new Options(goals);
+                    options.DisplayGoalsFromTxt(goals);
+                    Console.WriteLine(goals.Count);
                 }
                 /*
                 Options options = new Options(goals);
@@ -164,7 +169,7 @@ class Program
                 else
                 {
                     Options options = new Options(goals);
-                    options.DisplayGoalsFromList(goals);
+                    options.DisplayGoalsFromTxt(goals);
                     Console.Write("\n Please enter the number of the goal you would like to record progress on: ");
                     int itemSelected = Convert.ToInt32(Console.ReadLine());
                     
@@ -179,12 +184,13 @@ class Program
                         string type = lineItem.Substring(0, lineItem.IndexOf(":"));
                         if(type == "Simple")
                         {
-                            //TODO fix the simple goal so it updates the goal in the list.
-                            Simple simple = new Simple(lineItem);
-                            string updatedGoal = simple.RecordEvent(lineItem);
+                            Simple simple = new Simple(goals, lineItem);
+                            string updatedGoal = simple.RecordEvent(goals,lineItem);
                             goals.RemoveAt(itemSelected);
+                            goals.Insert(itemSelected, updatedGoal);
 
-                            //goals.Insert(itemSelected - 1, updatedGoal);
+                            Simple simple2 = new Simple(goals, itemSelected);
+                            string updatedScoreTotal = simple2.CalculateScore(goals, itemSelected);
                         }
                         else if(type == "Eternal")
                         {

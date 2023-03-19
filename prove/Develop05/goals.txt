@@ -1,4 +1,5 @@
-TotalScore:0
-Simple:[ ] Name:Go for a walk Description:(Go for a walk around the park with the dog.), Score:50, Status:False
+TotalScore:50
+Simple:[ ] Name:Go for a walk Description:(Go for a walk around the park with the dog.), Score:50, Status:True
 Eternal:[ ] Name:Visit the temple Description:(Go to the temple to do an ordinance.), Score:300, Status:False
 Checklist:[ ] Name:Read a book Description:(Read a new book every two months.), Score:150, Bonus:1000, Denominator:6, Numerator:0, Status:False
+Simple:[ ] Name:Go to the gym Description:(Go to the gym in the early morning before work.), Score:200, Status:False

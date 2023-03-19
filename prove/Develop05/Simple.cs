@@ -14,14 +14,16 @@ public class Simple : Goal
         _goalType = goaltype;
     }
 
-    public Simple(string line) :base(line)
+    public Simple(List<string> list, string line) :base(list, line)
     {
+        _list = list;
         _line = line;
     }
 
-    public override int CalculateScore()
+    public Simple(List<string> list, int number) :base(list, number)
     {
-        return _score;
+        _list = list;
+        _number = number;
     }
 
     public override string NewGoal()
@@ -35,23 +37,59 @@ public class Simple : Goal
         return $"{_goalType}:[ ] Name:{_goalItem} Description:({_goalDescription}), Score:{_score}, Status:{_status}";
     }
 
-    public override string RecordEvent(string line)
+    public override string RecordEvent(List<string> list, string line)
     {
         string newLine = line;
-        //char[] checkbox = { '[' };
-        //int position1 = newLine.IndexOfAny(checkbox)-1;
+        //string [] removePartOfString = {"Score:", "Status:False", ",", "Status:True", " "};
         int position1 = newLine.IndexOf(']') - 1;
-        //Console.WriteLine(newLine);
-        //Console.WriteLine(position1);
+        //int goalPoints = newLine.IndexOf("Score:");
+        //string scoreSubstring = newLine.Substring(goalPoints);
+        
+        /*
+        foreach (string item in removePartOfString)
+        {
+            scoreSubstring = scoreSubstring.Replace(item, "");
+        };
+        */
+        
+        //int score = Convert.ToInt32(scoreSubstring);
+        //Console.WriteLine(score);
+        //CalculateScore(list, score);
+
         newLine = newLine.Remove(position1, 1);
         newLine = newLine.Insert(position1, "X");
-        //newLine.Replace("Status:False", "Status:True");
-        //Console.WriteLine(newLine);
         newLine = newLine.Replace("Status:False", "Status:True");
-        //Console.WriteLine(newLine);
-        
-
         return newLine;
+    }
+
+    //TODO: continue working on this method
+    public override string CalculateScore(List<string> list, int number)
+    {
+        //int total = 0;
+        string startingTotal = list[0];
+        string scoreToAdd = list[number];
+        
+        string [] removePartsOfString = {"TotalScore:", " "};
+        string [] removePartOfEntireString = {"A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G", "g", "H", "h", "I", "i", "J", "j", "K", "k", "L", "l", "M", "m", "N", "n", "O", "o", "P", "p", "Q", "q", "R", "r", "S", "s", "T", "t", "U", "u", "V", "v", "W", "w", "X", "x", "Y", "y", "Z", "z", ".", " ", ":", "(", ")", ",", "[X]", "[ ]", "[]", "`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "_", "+", "|", "}", "{", "?", ">", "<", "`", "-", "=" };
+
+        foreach (string item in removePartsOfString)
+        {
+            startingTotal = startingTotal.Replace(item, "");
+        };
+
+        foreach (string item in removePartOfEntireString)
+        {
+            scoreToAdd = scoreToAdd.Replace(item, "");
+        };
+
+        Console.WriteLine(startingTotal);
+        Console.WriteLine(scoreToAdd);
+
+        //int newStartingTotal = Convert.ToInt32(startingTotal);
+        //int total = newStartingTotal + number;
+        //string newTotalScore = $"TotalScore:{total}";
+        //Console.WriteLine(newTotalScore);
+        return "";//newTotalScore;;
     }
     /*
     // todo fix the method below

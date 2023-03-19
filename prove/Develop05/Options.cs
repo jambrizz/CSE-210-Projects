@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 public class Options : Goal
 {
@@ -26,7 +27,32 @@ public class Options : Goal
     
     public void SaveGoals(string _fileName, List<string> _list)
     {
-        using (StreamWriter outputFile = new StreamWriter(_fileName))
+        if (File.Exists(_fileName) == true)
+        {
+            using (StreamWriter outputFile = new StreamWriter(_fileName))
+            {
+                foreach (var item in _list)
+                {
+                    outputFile.WriteLine(item);
+                }
+            }
+        }
+        else
+        {
+            using (StreamWriter outputFile = new StreamWriter(_fileName))
+            {
+                outputFile.WriteLine($"TotalScore:{GetScore()}");
+                foreach (var item in _list)
+                {
+                    outputFile.WriteLine(item);
+                }
+            }
+        }
+    }
+
+    public void SaveToExistingFile(string _fileName, List<string> _list)
+    {
+        using (StreamWriter outputFile = new StreamWriter(_fileName, true))
         {
             outputFile.WriteLine($"TotalScore:{GetScore()}");
             foreach (var item in _list)
@@ -36,7 +62,6 @@ public class Options : Goal
         }
     }
 
-    //TODO: fix the While loop or change it to a for loop
     public void LoadFile(string _fileName, List<string> List)
     {
         using (StreamReader inputFile = new StreamReader(_fileName))
@@ -52,10 +77,8 @@ public class Options : Goal
 
     public void DisplayGoalsFromTxt(List<string> list)
     {
-        //Console.Clear();
-                //TODO update the removePartOfString so it handles object names that identify parts of the string that need to be removed.
-                string [] removePartOfString = {"Simple:", "Eternal:", "Checklist:", "Name:", "Description:", "Score:", "Bonus:", "Denominator:", "Numerator:", "Status:", ",", "True", "False", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
-                Console.WriteLine(list.Count);
+        string [] removePartOfString = {"Simple:", "Eternal:", "Checklist:", "Name:", "Description:", "Score:", "Bonus:", "Denominator:", "Numerator:", "Status:", ",", "True", "False", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+                //Console.WriteLine(list.Count);
                 Console.WriteLine("\n");
                 for (int i = 1; i < list.Count;)
                 {
@@ -71,7 +94,6 @@ public class Options : Goal
                 };
                 Console.WriteLine("\n"); 
     }
-    //TODO: fix the method below so it displays the goals from the list but does not add the same item to the list twice.
     public void DisplayGoalsFromList(List<string> list)
     {
         Console.WriteLine("\n");

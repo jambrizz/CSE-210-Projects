@@ -61,9 +61,16 @@ public abstract class Goal
         _score = score;
     }
        
-     public Goal(string line)
+     public Goal(List<string> list, string line)
      {
-         _line = line;
+        _list = list;
+        _line = line;
+     }
+
+     public Goal(List<string> list, int number)
+     {
+        _list = list;
+        _number = number;
      }
 
      public Goal()
@@ -80,17 +87,17 @@ public abstract class Goal
         _score = score;
     }
 
-    public virtual int CalculateScore()
+    public virtual string CalculateScore(List<string> list, int number)
     {
-        return 0;
+        return "";
     }
-
+    
     public virtual string RecordGoal()
     {
         return "";
     }
 
-    public virtual string RecordEvent(string line)
+    public virtual string RecordEvent(List<string> list, string line)
     {
         return line;
     }

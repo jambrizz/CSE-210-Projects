@@ -31,7 +31,6 @@ public class Simple : Goal
         throw new NotImplementedException();
     }
 
-    //TODO Change this to add details about the object ex. "Score: 10" to use this to access certain parts of the string in the txt file
     public override string RecordGoal()
     {
         return $"{_goalType}:[ ] Name:{_goalItem} Description:({_goalDescription}), Score:{_score}, Status:{_status}";
@@ -40,21 +39,9 @@ public class Simple : Goal
     public override string RecordEvent(List<string> list, string line)
     {
         string newLine = line;
-        //string [] removePartOfString = {"Score:", "Status:False", ",", "Status:True", " "};
+        
         int position1 = newLine.IndexOf(']') - 1;
-        //int goalPoints = newLine.IndexOf("Score:");
-        //string scoreSubstring = newLine.Substring(goalPoints);
         
-        /*
-        foreach (string item in removePartOfString)
-        {
-            scoreSubstring = scoreSubstring.Replace(item, "");
-        };
-        */
-        
-        //int score = Convert.ToInt32(scoreSubstring);
-        //Console.WriteLine(score);
-        //CalculateScore(list, score);
 
         newLine = newLine.Remove(position1, 1);
         newLine = newLine.Insert(position1, "X");
@@ -62,10 +49,9 @@ public class Simple : Goal
         return newLine;
     }
 
-    //TODO: continue working on this method
     public override string CalculateScore(List<string> list, int number)
     {
-        //int total = 0;
+        
         string startingTotal = list[0];
         string scoreToAdd = list[number];
         
@@ -82,14 +68,14 @@ public class Simple : Goal
             scoreToAdd = scoreToAdd.Replace(item, "");
         };
 
-        Console.WriteLine(startingTotal);
-        Console.WriteLine(scoreToAdd);
-
-        //int newStartingTotal = Convert.ToInt32(startingTotal);
-        //int total = newStartingTotal + number;
-        //string newTotalScore = $"TotalScore:{total}";
-        //Console.WriteLine(newTotalScore);
-        return "";//newTotalScore;;
+        int newStartingTotal = Convert.ToInt32(startingTotal);
+        int newScore = Convert.ToInt32(scoreToAdd);
+        int newTotal = newStartingTotal + newScore;
+        Console.WriteLine($"\n Congratulations! You completed a goal! You have earned {newScore} points! Your new total score is {newTotal}! \n");
+        newTotal.ToString();
+        string newTotalScore = $"TotalScore:{newTotal}";
+        
+        return newTotalScore;
     }
     /*
     // todo fix the method below

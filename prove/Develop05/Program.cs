@@ -108,29 +108,6 @@ class Program
                     options.DisplayGoalsFromTxt(goals);
                     Console.WriteLine(goals.Count);
                 }
-                /*
-                Options options = new Options(goals);
-                options.DisplayGoalsFromTxt(goals);
-                /*
-                Console.Clear();
-                //TODO update the removePartOfString so it handles object names that identify parts of the string that need to be removed.
-                string [] removePartOfString = {"Simple:", "Eternal:", "Checklist:", "Name:", "Description:", "Score:", "Bonus:", "Denominator:", "Numerator:", "Status:", ",", "True", "False", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
-
-                Console.WriteLine("\n");
-                for (int i = 1; i < goals.Count;)
-                {
-                    Console.Write(i + ". ");
-                    string goalItem = goals[i];
-                    foreach (var part in removePartOfString)
-                    {
-                        goalItem = goalItem.Replace(part, "");
-                        //i++;
-                    }
-                    i++;
-                    Console.Write(goalItem + "\n");
-                };
-                Console.WriteLine("\n");
-                */ 
             }
             else if(selection == 3)
             {   
@@ -143,7 +120,6 @@ class Program
             }
             else if(selection == 4)
             {
-                //TODO fix the Load file so it does not display the first line of the file where we store the score as an empty option.
                 Console.Clear();
                 Console.Write("What is the filename for the goal file (don't forget to add .txt of your filename)? ");
                 string fileName = Console.ReadLine();
@@ -191,16 +167,25 @@ class Program
 
                             Simple simple2 = new Simple(goals, itemSelected);
                             string updatedScoreTotal = simple2.CalculateScore(goals, itemSelected);
+                            goals.RemoveAt(0);
+                            goals.Insert(0, updatedScoreTotal);
                         }
                         else if(type == "Eternal")
                         {
-                            Console.WriteLine("You selected an eternal goal \n");
-                            Console.WriteLine(lineItem);
+                            Eternal eternal = new Eternal(goals, itemSelected);
+                            string updatedScoreTotal = eternal.CalculateScore(goals, itemSelected);
+                            goals.RemoveAt(0);
+                            goals.Insert(0, updatedScoreTotal);
+                            foreach (var item in goals)
+                            {
+                                Console.WriteLine(item);
+                            }
                         }
                         else if(type == "Checklist")
                         {
-                            Console.WriteLine("You selected a checklist goal \n");
-                            Console.WriteLine(lineItem);
+                            Checklist checklist = new Checklist(goals, itemSelected);
+                            string updatedGoal = checklist.RecordEvent(goals, lineItem);
+                            Console.WriteLine(updatedGoal);
                         }
                         else
                         {

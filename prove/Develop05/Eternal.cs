@@ -23,7 +23,7 @@ public class Eternal : Goal
     
     public override string RecordGoal()
     {
-        return $"{_goalType}:[ ] Name:{_goalItem} Description:({_goalDescription}), Score:{_score}, Status:{_status}";
+        return $"{_goalType}:[ ], Name:{_goalItem} Description:({_goalDescription}), Score:{_score}, Status:{_status}";
     }
 
     public override string CalculateScore(List<string> list, int number)
@@ -54,19 +54,7 @@ public class Eternal : Goal
         
         return newTotalScore;
     }
-    /*
-    public override string RecordEvent(List<string> list, string line)
-    {
-        //TODO: work on creating a new line of string to add to the list
-        return "";
-    }
-    */
-    /*
-    public override bool IsComplete()
-    {
-        return status;
-    }
-    */
+    
     public override string NewGoal()
     {
         return "";

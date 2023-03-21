@@ -11,7 +11,21 @@ class Program
         bool programRun = true;
         do
         {
-            Console.WriteLine($"You have X points");
+            if(goals.Count > 0)
+            {
+                string startingTotal = goals[0];
+                string [] removePartsOfString = {"TotalScore:"};
+                string [] numberAsString = startingTotal.Split(removePartsOfString, StringSplitOptions.RemoveEmptyEntries);
+                int startingTotalNumber = Convert.ToInt32(numberAsString[0]);
+                Console.WriteLine();
+                Console.WriteLine($"You have {startingTotalNumber} points");
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("You have 0 points");
+            }
+            
             Console.WriteLine("Welcome to the Eternal Quest Program!");
             Console.WriteLine("Menu Options:");
             Console.WriteLine("1. Create a new goal");
@@ -95,7 +109,6 @@ class Program
             }
             else if(selection == 2)
             {
-                //TODO fix the display to handle either displaying the goals from the list after the intial load or from the txt file or from the list that already has goals in it.
                 Console.Clear();
                 if(goals.Count == 0)
                 {
@@ -103,10 +116,8 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine(goals.Count);
                     Options options = new Options(goals);
                     options.DisplayGoalsFromTxt(goals);
-                    Console.WriteLine(goals.Count);
                 }
             }
             else if(selection == 3)
@@ -176,16 +187,20 @@ class Program
                             string updatedScoreTotal = eternal.CalculateScore(goals, itemSelected);
                             goals.RemoveAt(0);
                             goals.Insert(0, updatedScoreTotal);
-                            foreach (var item in goals)
-                            {
-                                Console.WriteLine(item);
-                            }
                         }
                         else if(type == "Checklist")
                         {
                             Checklist checklist = new Checklist(goals, itemSelected);
                             string updatedGoal = checklist.RecordEvent(goals, lineItem);
-                            Console.WriteLine(updatedGoal);
+                            //Console.WriteLine(updatedGoal);
+                            goals.RemoveAt(itemSelected);
+                            goals.Insert(itemSelected, updatedGoal);
+                            /*
+                            Checklist checklist2 = new Checklist(goals, itemSelected);
+                            string updatedScoreTotal = checklist2.CalculateScore(goals, itemSelected);
+                            goals.RemoveAt(0);
+                            goals.Insert(0, updatedScoreTotal);
+                            */
                         }
                         else
                         {

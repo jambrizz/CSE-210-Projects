@@ -33,7 +33,7 @@ public class Simple : Goal
 
     public override string RecordGoal()
     {
-        return $"{_goalType}:[ ] Name:{_goalItem} Description:({_goalDescription}), Score:{_score}, Status:{_status}";
+        return $"{_goalType}:[ ], Name:{_goalItem} Description:({_goalDescription}), Score:{_score}, Status:{_status}";
     }
 
     public override string RecordEvent(List<string> list, string line)
@@ -77,16 +77,4 @@ public class Simple : Goal
         
         return newTotalScore;
     }
-    /*
-    // todo fix the method below
-    public override bool IsComplete()
-    {
-        return status;
-    }
-
-    public override string NewGoal()
-    {
-        return "";
-    }
-    */
 }

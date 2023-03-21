@@ -25,6 +25,8 @@ public abstract class Goal
 
     protected string _line;
 
+    public int _startingTotal;
+
     public object GetGoalsList(List<string> list)
     {
         foreach (var item in list)
@@ -86,7 +88,12 @@ public abstract class Goal
     {
         _score = score;
     }
-
+    ////////////////////////////////////////////////
+    public int GetStartingTotal(List<string> list, int number)
+    {
+        return _startingTotal;
+    }
+    ////////////////////////////////////////////////
     public virtual string CalculateScore(List<string> list, int number)
     {
         return "";

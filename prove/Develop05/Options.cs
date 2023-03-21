@@ -77,22 +77,63 @@ public class Options : Goal
 
     public void DisplayGoalsFromTxt(List<string> list)
     {
-        string [] removePartOfString = {"Simple:", "Eternal:", "Checklist:", "Name:", "Description:", "Score:", "Bonus:", "Denominator:", "Numerator:", "Status:", ",", "True", "False", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
-                //Console.WriteLine(list.Count);
-                Console.WriteLine("\n");
-                for (int i = 1; i < list.Count;)
+
+        for (int i = 1; i < list.Count;)
+        {
+            string line = list[i];
+            //string emptyCheckBox = "[ ]";
+            bool checkBoxStatus = line.Contains("[ ]");
+            
+            if (checkBoxStatus == true)
+            {
+                string [] seperator = {","};
+                string [] removeIdentifiers = {"Name:", "Description:"};
+
+                int positionOfCheckBox = list[i].IndexOf("[", 3);
+                string checkBox = list[i].Substring(positionOfCheckBox);
+                string [] checkBoxArray = checkBox.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+                string checkBoxArrayString = checkBoxArray[0];
+
+                int positionOfName = list[i].IndexOf("Name:");
+                string nameAndDescription = list[i].Substring(positionOfName);
+                string [] nameArray1 = nameAndDescription.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+                string nameWithIdentifier = nameArray1[0];
+                
+
+                string displayEntry = i + ". " + checkBoxArrayString + " " + nameWithIdentifier;
+                foreach (string item in removeIdentifiers)
                 {
-                    Console.Write(i + ". ");
-                    string goalItem = list[i];
-                    foreach (var part in removePartOfString)
-                    {
-                        goalItem = goalItem.Replace(part, "");
-                        //i++;
-                    }
-                    i++;
-                    Console.Write(goalItem + "\n");
-                };
-                Console.WriteLine("\n"); 
+                    displayEntry = displayEntry.Replace(item, "");
+                }
+                Console.WriteLine(displayEntry);
+                i++;
+            }
+            else
+            {
+                string [] seperator = {","};
+                string [] removeIdentifiers = {"Name:", "Description:"};
+
+                int positionOfCheckBox = list[i].IndexOf("[", 3);
+                string checkBox = list[i].Substring(positionOfCheckBox);
+                string [] checkBoxArray = checkBox.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+                string checkBoxArrayString = checkBoxArray[0];
+
+                int positionOfName = list[i].IndexOf("Name:");
+                string nameAndDescription = list[i].Substring(positionOfName);
+                string [] nameArray1 = nameAndDescription.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+                string nameWithIdentifier = nameArray1[0];
+                
+
+                string displayEntry = i + ". " + checkBoxArrayString + " " + nameWithIdentifier;
+                foreach (string item in removeIdentifiers)
+                {
+                    displayEntry = displayEntry.Replace(item, "");
+                }
+                Console.WriteLine(displayEntry);
+                i++;
+            }
+        }
+       
     }
     public void DisplayGoalsFromList(List<string> list)
     {

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public class Simple : Goal
 {    
-    //private bool status;
-
     public Simple(bool status, string goal, string description, int score, string goaltype) : base(status, goal, description, score, goaltype)
     {
         _status = status;
@@ -51,30 +49,38 @@ public class Simple : Goal
 
     public override string CalculateScore(List<string> list, int number)
     {
-        
         string startingTotal = list[0];
-        string scoreToAdd = list[number];
-        
+        string newLine = list[number];
+
         string [] removePartsOfString = {"TotalScore:", " "};
-        string [] removePartOfEntireString = {"A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G", "g", "H", "h", "I", "i", "J", "j", "K", "k", "L", "l", "M", "m", "N", "n", "O", "o", "P", "p", "Q", "q", "R", "r", "S", "s", "T", "t", "U", "u", "V", "v", "W", "w", "X", "x", "Y", "y", "Z", "z", ".", " ", ":", "(", ")", ",", "[X]", "[ ]", "[]", "`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "_", "+", "|", "}", "{", "?", ">", "<", "`", "-", "=" };
+        string [] exposePartsOfString = {"Score:"};
+        string [] seperator = {","};
+
+        int positionOfScore = newLine.IndexOf("Score:");
+        string score = newLine.Substring(positionOfScore);
+
+        string [] scoreArray = score.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+        string scoreString = scoreArray[0];
 
         foreach (string item in removePartsOfString)
         {
             startingTotal = startingTotal.Replace(item, "");
-        };
+        }
 
-        foreach (string item in removePartOfEntireString)
+        foreach (string item in exposePartsOfString)
         {
-            scoreToAdd = scoreToAdd.Replace(item, "");
-        };
+            scoreString = scoreString.Replace(item, "");
+        }
 
-        int newStartingTotal = Convert.ToInt32(startingTotal);
-        int newScore = Convert.ToInt32(scoreToAdd);
-        int newTotal = newStartingTotal + newScore;
-        Console.WriteLine($"\n Congratulations! You completed a goal! You have earned {newScore} points! Your new total score is {newTotal}! \n");
-        newTotal.ToString();
-        string newTotalScore = $"TotalScore:{newTotal}";
+        int startingTotalInt = Convert.ToInt32(startingTotal);
+        int scoreInt = Convert.ToInt32(scoreString);
+
+        int newTotalScore = startingTotalInt + scoreInt;
+        newTotalScore.ToString();
+        string newTotalScoreString = $"TotalScore:{newTotalScore}";
+        Console.WriteLine();
+        Console.WriteLine($"Congratulations! You completed a goal! You have earned {scoreInt} points! Your new total score is {newTotalScore}! \n");
         
-        return newTotalScore;
+        return newTotalScoreString;
     }
 }

@@ -16,9 +16,17 @@ class Program
                 string startingTotal = goals[0];
                 string [] removePartsOfString = {"TotalScore:"};
                 string [] numberAsString = startingTotal.Split(removePartsOfString, StringSplitOptions.RemoveEmptyEntries);
-                int startingTotalNumber = Convert.ToInt32(numberAsString[0]);
-                Console.WriteLine();
-                Console.WriteLine($"You have {startingTotalNumber} points");
+                bool isNumber = int.TryParse(numberAsString[0], out int startingTotalNumber);
+                if (isNumber == true)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"You have {startingTotalNumber} points");
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("You have 0 points");
+                }
             }
             else
             {
@@ -104,20 +112,34 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("\n You did not select a valid choice please try again \n");
+                    Console.WriteLine();
+                    Console.WriteLine("You did not select a valid choice please try again \n");
                 }
             }
             else if(selection == 2)
             {
-                Console.Clear();
-                if(goals.Count == 0)
+                if (goals.Count == 0)
                 {
-                    Console.WriteLine("You have no goals to display \n");
+                    Console.Clear();
+                    Console.WriteLine("You have no goals to display, Please load a file or create a goal \n");
                 }
                 else
                 {
-                    Options options = new Options(goals);
-                    options.DisplayGoalsFromTxt(goals);
+                    Console.Clear();
+                    string startingTotal = goals[0];
+                    string [] removePartsOfString = {"TotalScore:"};
+                    string [] numberAsString = startingTotal.Split(removePartsOfString, StringSplitOptions.RemoveEmptyEntries);
+                    bool isNumber = int.TryParse(numberAsString[0], out int startingTotalNumber);
+                    if (isNumber == true)
+                    {
+                        Options options = new Options(goals);
+                        options.DisplayGoalsFromTxt(goals);
+                    }
+                    else
+                    {
+                        Options options = new Options(goals);
+                        options.DisplayGoalsFromList(goals);
+                    }
                 }
             }
             else if(selection == 3)
@@ -148,63 +170,87 @@ class Program
             }
             else if(selection == 5)
             {
-                Console.Clear();
+                
                 if (goals.Count == 0)
                 {
+                    Console.Clear();
                     Console.WriteLine("You have no goals to display, Please load a file or create a goal \n");
                 }
                 else
                 {
-                    Options options = new Options(goals);
-                    options.DisplayGoalsFromTxt(goals);
-                    Console.Write("\n Please enter the number of the goal you would like to record progress on: ");
-                    int itemSelected = Convert.ToInt32(Console.ReadLine());
+                    Console.Clear();
+                    string startingTotal = goals[0];
+                    string [] removePartsOfString = {"TotalScore:"};
+                    string [] numberAsString = startingTotal.Split(removePartsOfString, StringSplitOptions.RemoveEmptyEntries);
+                    bool isNumber = int.TryParse(numberAsString[0], out int startingTotalNumber);
                     
-                    if(itemSelected > goals.Count)
+                    if (isNumber == false)
                     {
-                        Console.WriteLine("You did not select a valid choice \n");
+                        Console.WriteLine("Please save your goals first before recording an event \n");
                     }
                     else
                     {
-                        
-                        string lineItem = goals[itemSelected];
-                        string type = lineItem.Substring(0, lineItem.IndexOf(":"));
-                        if(type == "Simple")
+                        Console.Clear();
+                        Options options = new Options(goals);
+                        options.DisplayGoalsFromTxt(goals);
+                        Console.WriteLine();
+                        Console.Write("Please enter the number of the goal you would like to record progress on: ");
+                        int itemSelected = Convert.ToInt32(Console.ReadLine());
+                    
+                        if(itemSelected > goals.Count)
                         {
-                            Simple simple = new Simple(goals, lineItem);
-                            string updatedGoal = simple.RecordEvent(goals,lineItem);
-                            goals.RemoveAt(itemSelected);
-                            goals.Insert(itemSelected, updatedGoal);
-
-                            Simple simple2 = new Simple(goals, itemSelected);
-                            string updatedScoreTotal = simple2.CalculateScore(goals, itemSelected);
-                            goals.RemoveAt(0);
-                            goals.Insert(0, updatedScoreTotal);
-                        }
-                        else if(type == "Eternal")
-                        {
-                            Eternal eternal = new Eternal(goals, itemSelected);
-                            string updatedScoreTotal = eternal.CalculateScore(goals, itemSelected);
-                            goals.RemoveAt(0);
-                            goals.Insert(0, updatedScoreTotal);
-                        }
-                        else if(type == "Checklist")
-                        {
-                            Checklist checklist = new Checklist(goals, itemSelected);
-                            string updatedGoal = checklist.RecordEvent(goals, lineItem);
-                            //Console.WriteLine(updatedGoal);
-                            goals.RemoveAt(itemSelected);
-                            goals.Insert(itemSelected, updatedGoal);
-                            /*
-                            Checklist checklist2 = new Checklist(goals, itemSelected);
-                            string updatedScoreTotal = checklist2.CalculateScore(goals, itemSelected);
-                            goals.RemoveAt(0);
-                            goals.Insert(0, updatedScoreTotal);
-                            */
+                            Console.WriteLine("You did not select a valid choice \n");
                         }
                         else
                         {
-                            Console.WriteLine("You did not select a valid choice \n");
+                        
+                            string lineItem = goals[itemSelected];
+                            string type = lineItem.Substring(0, lineItem.IndexOf(":"));
+                            bool isGoalCompleted = lineItem.Contains("Status:True");
+                            if(isGoalCompleted == true)
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("This goal has already been completed. Please select a different goal to complete \n");
+                            }
+                            else
+                            {
+                                if(type == "Simple")
+                                {
+                                    Simple simple = new Simple(goals, lineItem);
+                                    string updatedGoal = simple.RecordEvent(goals,lineItem);
+                                    goals.RemoveAt(itemSelected);
+                                    goals.Insert(itemSelected, updatedGoal);
+
+                                    Simple simple2 = new Simple(goals, itemSelected);
+                                    string updatedScoreTotal = simple2.CalculateScore(goals, itemSelected);
+                                    goals.RemoveAt(0);
+                                    goals.Insert(0, updatedScoreTotal);
+                                }
+                                else if(type == "Eternal")
+                                {
+                                    Eternal eternal = new Eternal(goals, itemSelected);
+                                    string updatedScoreTotal = eternal.CalculateScore(goals, itemSelected);
+                                    goals.RemoveAt(0);
+                                    goals.Insert(0, updatedScoreTotal);
+                                }
+                                else if(type == "Checklist")
+                                {
+                                    Checklist checklist = new Checklist(goals, itemSelected);
+                                    string updatedGoal = checklist.RecordEvent(goals, lineItem);
+    
+                                    goals.RemoveAt(itemSelected);
+                                    goals.Insert(itemSelected, updatedGoal);
+                            
+                                    Checklist checklist2 = new Checklist(goals, itemSelected);
+                                    string updatedScoreTotal = checklist2.CalculateScore(goals, itemSelected);
+                                    goals.RemoveAt(0);
+                                    goals.Insert(0, updatedScoreTotal);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("You did not select a valid choice \n");
+                                }
+                            }
                         }
                     }
                     
@@ -212,10 +258,36 @@ class Program
             }
             else if(selection == 6)
             {
-                //TODO add a feature were it checks if the goals List has any items in it and if it does it asks if you want to save the goals before exiting.
-                Console.WriteLine("\n Exit \n");
-                programRun = false;
-                Console.Clear();
+                int isListEmpty = goals.Count;
+                if(isListEmpty == 0)
+                {
+                    Console.WriteLine("Thank you for using the Eternal Quest Program! See you next time \n");
+                    programRun = false;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("You have not saved your goals. If you exit now you will lose all progress. \n");
+                    Console.Write("Are you sure you want to exit? (Y/N) ");
+                    string exit = Console.ReadLine();
+                    if(exit == "Y" || exit == "y")
+                    {
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Thank you for using the Eternal Quest Program! See you next time. \n");
+                        programRun = false;
+                    }
+                    else if(exit == "N" || exit == "n")
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Eternal Quest Program is still running. \n");
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You did not select a valid choice, the Eternal Quest program is still running. \n");
+                    }
+                }
             }
             else
             {

@@ -88,12 +88,12 @@ public abstract class Goal
     {
         _score = score;
     }
-    ////////////////////////////////////////////////
+    
     public int GetStartingTotal(List<string> list, int number)
     {
         return _startingTotal;
     }
-    ////////////////////////////////////////////////
+    
     public virtual string CalculateScore(List<string> list, int number)
     {
         return "";

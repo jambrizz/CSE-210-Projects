@@ -8,6 +8,7 @@ class Program
         List<string> comments = new List<string>();
         List<string> videos = new List<string>();
         List<string> savedvideos = new List<string>();
+        List<string> savedcomments = new List<string>();
         
         bool programRun = true;
         do
@@ -20,8 +21,8 @@ class Program
             Console.WriteLine("2. Add a comment");
             Console.WriteLine("3. Display all videos");
             Console.WriteLine("4. Display video details");
-            Console.WriteLine("5. Save videos to file");
-            Console.WriteLine("6. Load videos from file");
+            Console.WriteLine("5. Save file");
+            Console.WriteLine("6. Load from file");
             Console.WriteLine("7. Exit program");
             Console.Write("Please enter your selection:");
             string userSelection = Console.ReadLine();
@@ -35,6 +36,7 @@ class Program
             else
             {
                 int featureSelection = int.Parse(userSelection);
+                // Add a video
                 if(featureSelection == 1)
                 {
                     Console.WriteLine();
@@ -93,21 +95,50 @@ class Program
                     Console.WriteLine($"{videos[0]}");
                     
                 }
+                //Add a Comment
                 else if(featureSelection == 2)
                 {
                     Console.WriteLine();
-                    Console.WriteLine($"You have selected to add a comment. \n");
+                    Console.WriteLine($"Please select the video you want to add a comment for. \n");
+                    File file = new File();
+                    file.DisplayListContents(videos);
+                    Console.WriteLine();
+                    Console.Write("Please enter your selection: ");
+                    string videoSelection = Console.ReadLine();
+                    bool validVideoSelection = int.TryParse(videoSelection, out int selectionVideo);
+
+                    if(validVideoSelection == false || selectionVideo > videos.Count)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Invalid selection. Please try again. \n");
+                        Console.WriteLine();
+                        Console.WriteLine($"Please select the video you want to add a comment for. \n");
+                        file.DisplayListContents(videos);
+                        Console.WriteLine();
+                        Console.Write("Please enter your selection: ");
+                        videoSelection = Console.ReadLine();
+                    }
+
+                    int videoSelectionInt = int.Parse(videoSelection); 
+                    
+                    Comments comment = new Comments();
+                    string videoId = comment.ExtractVideoId(videos, videoSelectionInt);
+
+                    //TODO: videoId above works now I need to pass it to the comment class
+                    //TODO: I need to create the prompts for the username and comment to pass it to a method in the comment class
+                    ////////////////////////////////////////////////////////////////
+
                 }
+                // Display all videos
                 else if(featureSelection == 3)
                 {
-                    //TODO: I need to continue working on this. I need to figure out how to display the videos in the list. So the user can select which video they want to see the details for.
-                    //TODO: Add functionality to be able to select between temporary and saved lists.
-                    //TODO: Finish the first TODO so I can work on adding the comments to the videos. by selecting the video from the list.
+                    //TODO: Code the rest of the menu options
                     Console.WriteLine($"");
                     Console.WriteLine("What list would you like to view?");
                     Console.WriteLine("1. Temporary Video List");
                     Console.WriteLine("2. Temporary Comment List");
                     Console.WriteLine("3. Saved Video List");
+                    Console.WriteLine("4. Saved Comment List");
                     Console.Write("Please enter your selection: ");
                     string listSelection = Console.ReadLine();
                     bool validListSelection = int.TryParse(listSelection, out int selectionList);
@@ -121,37 +152,75 @@ class Program
                         Console.WriteLine("1. Temporary Video List");
                         Console.WriteLine("2. Temporary Comment List");
                         Console.WriteLine("3. Saved Video List");
+                        Console.WriteLine("4. Saved Comment List");
                         Console.Write("Please enter your selection: ");
                         listSelection = Console.ReadLine();
                     }
-                    else
-                    {
-                        int listType = int.Parse(listSelection);                     
+                    
+                    int listType = int.Parse(listSelection);                     
                         if(listType == 1)
                         {
-                            Console.WriteLine($"");
-                            Console.WriteLine($"You have selected to view the temporary video list. \n");
-                            Console.WriteLine($"");
-                            Console.WriteLine($"Here are the videos in the temporary video list: \n");
-                            Console.WriteLine($"{videos[0]}");
+                            if (videos.Count == 0)
+                            {
+                                Console.WriteLine($"");
+                                Console.WriteLine($"You have selected to view the temporary video list. \n");
+                                Console.WriteLine($"There are no videos in the temporary video list. \n");
+                            }
+                            else
+                            {
+                                File file = new File();
+                                file.DisplayListContents(videos);
+                            }
                         }
                         else if(listType == 2)
                         {
-                            Console.WriteLine($"");
-                            Console.WriteLine($"You have selected to view the temporary comment list. \n");
+                            if (comments.Count == 0)
+                            {
+                                Console.WriteLine($"");
+                                Console.WriteLine($"You have selected to view the temporary comment list. \n");
+                                Console.WriteLine($"There are no comments in the temporary comment list. \n");
+                            }
+                            else
+                            {
+                                File file = new File();
+                                file.DisplayListContents(comments);
+                            }
                         }
                         else if(listType == 3)
                         {
-                            Console.WriteLine($"");
-                            Console.WriteLine($"You have selected to view the saved video list. \n");
+                            if(savedvideos.Count == 0)
+                            {
+                                Console.WriteLine($"");
+                                Console.WriteLine($"You have selected to view the saved video list. \n");
+                                Console.WriteLine($"There are no videos in the saved video list. \n");
+                            }
+                            else
+                            {
+                                File file = new File();
+                                file.DisplayListContents(savedvideos);
+                            }
+                        }
+                        else if(listType == 4)
+                        {
+                            if(savedcomments.Count == 0)
+                            {
+                                Console.WriteLine($"");
+                                Console.WriteLine($"You have selected to view the saved comment list. \n");
+                                Console.WriteLine($"There are no comments in the saved comment list. \n");
+                            }
+                            else
+                            {
+                                File file = new File();
+                                file.DisplayListContents(savedcomments);
+                            }
                         }
                         else
                         {
                             Console.WriteLine($"");
                             Console.WriteLine($"You have selected an invalid option. Please try again. \n");
                         }
-                    }
                 }
+                // Display video details
                 else if(featureSelection == 4)
                 {
                     Console.WriteLine($"");

@@ -16,12 +16,13 @@ public class File
 
     }
 
-    public void DisplayVideosFromList(List<string> list)
+    public void DisplayListContents(List<string> list)
     {
         for (int i = 0; i < list.Count;)
         {
             int j = i + 1;
             Console.WriteLine($"{j}. {list[i]}");
+            i++;
         }
     }
 }

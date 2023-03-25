@@ -38,7 +38,7 @@ public class Video
 
     public string GetVideoDetails()
     {
-        return $"Title: {_title}, Description: {_description}, Author: {_author}, Length: {_length}, Video ID: {_videoId}";
+        return $"Title: {_title}, Description: {_description}, Author: {_author}, Length: {_length}, VideoId: {_videoId}";
     }
 
     public string GetVideoTitle(string title)

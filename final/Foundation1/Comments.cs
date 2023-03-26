@@ -26,7 +26,7 @@ public class Comments
 
      public string GetCommentDetails()
      {
-        return $"Video ID: {_videoId}, User: {_user}, Comment: {_comment}";
+        return $"VideoId: {_videoId}, User: {_user}, Comment: {_comment}";
      }
 
     public string GetVideoId(string videoId)
@@ -48,6 +48,12 @@ public class Comments
         }
 
         return videoId;
+    }
+
+    public string newComment(string videoId, string user, string comment)
+    {
+        string newComment = $"VideoId: {videoId}, User: {user}, Comment: {comment}";
+        return newComment;
     }
 }
     

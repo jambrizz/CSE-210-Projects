@@ -33,7 +33,63 @@ class Program
                 if(featureSelection == 1)
                 {
                     Console.WriteLine();
-                    Console.WriteLine("You have selected to browse products. \n");
+                    Console.WriteLine("Camping Outlet Products");
+                    Console.WriteLine("1. Tents");
+                    Console.WriteLine("2. Sleeping Bags");
+                    Console.WriteLine("3. Cookware");
+                    Console.WriteLine("4. Lanterns");
+                    Console.WriteLine("5. Back to Site Navigation");
+                    Console.Write("Please enter a number to navigate to the desired page: ");
+                    string productSelection = Console.ReadLine();
+                    bool isValidProductSelection = int.TryParse(productSelection, out int productSelectionInt);
+
+                    if (isValidProductSelection == false)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Please enter a valid selection. \n");
+                        Console.WriteLine();
+                        Console.WriteLine("1. Tents");
+                        Console.WriteLine("2. Sleeping Bags");
+                        Console.WriteLine("3. Cookware");
+                        Console.WriteLine("4. Lanterns");
+                        Console.WriteLine("5. Back to Site Navigation");
+                        Console.Write("Please enter a number to navigate to the desired page: ");
+                        productSelection = Console.ReadLine();
+                        isValidProductSelection = int.TryParse(productSelection, out productSelectionInt);
+                    }
+
+                    if (productSelectionInt == 1)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Tents");
+                        Product product = new Product();
+                        ////////////////////////////////////////////////////
+                        //TODO: fix the line of code below
+                        ////////////////////////////////////////////////////
+                        string productDetails = product.DisplayProducts(tents);
+                    }
+                    else if(productSelectionInt == 2)
+                    {
+
+                    }
+                    else if(productSelectionInt == 3)
+                    {
+
+                    }
+                    else if(productSelectionInt == 4)
+                    {
+
+                    }
+                    else if(productSelectionInt == 5)
+                    {
+
+                    }
+                    else
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Please enter a valid selection. \n");
+                    }
+
                 }
                 else if (featureSelection == 2)
                 {

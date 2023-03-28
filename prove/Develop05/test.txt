@@ -1,0 +1,4 @@
+TotalScore:1900
+Simple:[X], Name:goal1 Description:(goal1), Score:100, Status:True
+Eternal:[ ], Name:goal2 Description:(goal2), Score:200, Status:False
+Checklist:[X], Name:goal3 Description:(goal3) -- Completed:2/2, Score:300, Bonus:1000, Denominator:2, Numerator:2, SStatus:True

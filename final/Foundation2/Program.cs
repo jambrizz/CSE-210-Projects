@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
 
 class Program
 {
@@ -45,6 +48,7 @@ class Program
 
                     if (isValidProductSelection == false)
                     {
+                        Console.Clear();
                         Console.WriteLine();
                         Console.WriteLine("Please enter a valid selection. \n");
                         Console.WriteLine();
@@ -60,29 +64,180 @@ class Program
 
                     if (productSelectionInt == 1)
                     {
+                        Console.Clear();
                         Console.WriteLine();
                         Console.WriteLine("Tents");
+                        Console.WriteLine();
                         Product product = new Product();
-                        ////////////////////////////////////////////////////
-                        //TODO: fix the line of code below
-                        ////////////////////////////////////////////////////
-                        string productDetails = product.DisplayProducts(tents);
+                        product.DisplayProducts(productSelectionInt);
+                        Console.WriteLine();
+                        Console.Write("Please enter the product number you would like to add to your cart: ");
+                        string productNumber = Console.ReadLine();
+                        bool isValidProductNumber = int.TryParse(productNumber, out int productNumberInt);
+
+                        if (isValidProductNumber == false)
+                        {
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine("Please enter a valid selection. \n");
+                            Console.WriteLine();
+                            Console.WriteLine("Tents");
+                            Console.WriteLine();
+                            product.DisplayProducts(productSelectionInt);
+                            Console.WriteLine();
+                            Console.Write("Please enter the product number you would like to add to your cart: ");
+                            productNumber = Console.ReadLine();
+                            isValidProductNumber = int.TryParse(productNumber, out productNumberInt);
+                        }
+
+                        string selectedProduct = product.GetProductDetails("tents", productNumberInt);
+                        Console.Clear();
+                        Console.WriteLine(selectedProduct);
+                        Console.WriteLine();
+                        Console.Write("Would you like to add this product to your cart? (Y/N): ");
+                        string addToCart = Console.ReadLine();
+
+                        if(addToCart == "y" || addToCart == "Y")
+                        {
+                            Console.WriteLine();
+                            Console.Write("Please enter the Quantity you wish to buy: ");
+                            string quantityString = Console.ReadLine();
+                            bool isValidQuantity = int.TryParse(quantityString, out int quantityInt);
+
+                            if(isValidQuantity == false || quantityInt <= 0)
+                            {
+                               Console.WriteLine();
+                               Console.WriteLine("You entered an invalid quantiry amount. \n");
+                               Console.WriteLine();
+                               Console.WriteLine("Please enter the Quantity you wish to buy: ");
+                               quantityString = Console.ReadLine();
+                               isValidQuantity = int.TryParse(quantityString, out quantityInt);
+                            }
+                            ////////////////////////////////////////////////
+                            //TODO: Test this feature with wrong input and that the add to cart List works
+                            ////////////////////////////////////////////////
+                            Cart cartItem = new Cart(selectedProduct, quantityInt);
+                            string item = cartItem.ItemToAddToCart();
+                            cart.Add(item);
+                            Console.WriteLine(item);
+                        }
+                        else if(addToCart == "n" || addToCart == "N")
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("You have chosen not to add this product to your cart. \n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You have entered an invalid selection. \n");
+                        }
                     }
                     else if(productSelectionInt == 2)
                     {
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Sleeping Bags");
+                        Console.WriteLine();
+                        Product product = new Product();
+                        //product.DisplaySleepingBags();
+                        product.DisplayProducts(productSelectionInt);
+                        Console.WriteLine();
+                        Console.Write("Please enter the product number you would like to add to your cart: ");
+                        string productNumber = Console.ReadLine();
+                        bool isValidProductNumber = int.TryParse(productNumber, out int productNumberInt);
 
+                        if (isValidProductNumber == false)
+                        {
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine("Please enter a valid selection. \n");
+                            Console.WriteLine();
+                            Console.WriteLine("Sleeping Bags");
+                            Console.WriteLine();
+                            product.DisplayProducts(productSelectionInt);
+                            Console.WriteLine();
+                            Console.Write("Please enter the product number you would like to add to your cart: ");
+                            productNumber = Console.ReadLine();
+                            isValidProductNumber = int.TryParse(productNumber, out productNumberInt);
+                        }
+                        ////////////////////////////////////////////////
+                        //TODO: Work on this section
+                        ////////////////////////////////////////////////
+                        string selectedProduct = product.GetProductDetails("sleepingBags", productNumberInt);
+                        Console.WriteLine(selectedProduct);
                     }
                     else if(productSelectionInt == 3)
                     {
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Cookware");
+                        Console.WriteLine();
+                        Product product = new Product();
+                        //product.DisplayCookware();
+                        product.DisplayProducts(productSelectionInt);
+                        Console.WriteLine();
+                        Console.Write("Please enter the product number you would like to add to your cart: ");
+                        string productNumber = Console.ReadLine();
+                        bool isValidProductNumber = int.TryParse(productNumber, out int productNumberInt);
 
+                        if (isValidProductNumber == false)
+                        {
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine("Please enter a valid selection. \n");
+                            Console.WriteLine();
+                            Console.WriteLine("Cookware");
+                            Console.WriteLine();
+                            product.DisplayProducts(productSelectionInt);
+                            Console.WriteLine();
+                            Console.Write("Please enter the product number you would like to add to your cart: ");
+                            productNumber = Console.ReadLine();
+                            isValidProductNumber = int.TryParse(productNumber, out productNumberInt);
+                        }
+                        ////////////////////////////////////////////////
+                        //TODO: Work on this section
+                        ////////////////////////////////////////////////
+                        string selectedProduct = product.GetProductDetails("cookware", productNumberInt);
+                        Console.WriteLine(selectedProduct);
                     }
                     else if(productSelectionInt == 4)
                     {
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Lanterns");
+                        Console.WriteLine();
+                        Product product = new Product();
+                        //product.DisplayLanterns();
+                        product.DisplayProducts(productSelectionInt);
+                        Console.WriteLine();
+                        Console.Write("Please enter the product number you would like to add to your cart: ");
+                        string productNumber = Console.ReadLine();
+                        bool isValidProductNumber = int.TryParse(productNumber, out int productNumberInt);
 
+                        if (isValidProductNumber == false)
+                        {
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine("Please enter a valid selection. \n");
+                            Console.WriteLine();
+                            Console.WriteLine("Lanterns");
+                            Console.WriteLine();
+                            product.DisplayProducts(productSelectionInt);
+                            Console.WriteLine();
+                            Console.Write("Please enter the product number you would like to add to your cart: ");
+                            productNumber = Console.ReadLine();
+                            isValidProductNumber = int.TryParse(productNumber, out productNumberInt);
+                        }
+                        ////////////////////////////////////////////////
+                        //TODO: Work on this section
+                        ////////////////////////////////////////////////
+                        string selectedProduct = product.GetProductDetails("lanterns", productNumberInt);
+                        Console.WriteLine(selectedProduct);
                     }
                     else if(productSelectionInt == 5)
                     {
-
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("You have selected to return to the site navigation. \n");
                     }
                     else
                     {

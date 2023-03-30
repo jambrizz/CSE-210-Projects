@@ -113,13 +113,12 @@ class Program
                                quantityString = Console.ReadLine();
                                isValidQuantity = int.TryParse(quantityString, out quantityInt);
                             }
-                            ////////////////////////////////////////////////
-                            //TODO: Test this feature with wrong input and that the add to cart List works
-                            ////////////////////////////////////////////////
+                            
                             Cart cartItem = new Cart(selectedProduct, quantityInt);
                             string item = cartItem.ItemToAddToCart();
                             cart.Add(item);
                             Console.WriteLine(item);
+                            Console.WriteLine("Your item has been added to your cart. \n");
                         }
                         else if(addToCart == "n" || addToCart == "N")
                         {
@@ -159,11 +158,37 @@ class Program
                             productNumber = Console.ReadLine();
                             isValidProductNumber = int.TryParse(productNumber, out productNumberInt);
                         }
-                        ////////////////////////////////////////////////
-                        //TODO: Work on this section
-                        ////////////////////////////////////////////////
                         string selectedProduct = product.GetProductDetails("sleepingBags", productNumberInt);
                         Console.WriteLine(selectedProduct);
+
+                        Console.Clear();
+                        Console.WriteLine(selectedProduct);
+                        Console.WriteLine();
+                        Console.Write("Would you like to add this product to your cart? (Y/N): ");
+                        string addToCart = Console.ReadLine();
+
+                        if(addToCart == "y" || addToCart == "Y")
+                        {
+                            Console.WriteLine();
+                            Console.Write("Please enter the Quantity you wish to buy: ");
+                            string quantityString = Console.ReadLine();
+                            bool isValidQuantity = int.TryParse(quantityString, out int quantityInt); 
+
+                            Cart cartItem = new Cart(selectedProduct, quantityInt);
+                            string item = cartItem.ItemToAddToCart();
+                            cart.Add(item);
+                            Console.WriteLine(item);
+                            Console.WriteLine("Your item has been added to your cart. \n");
+                        }
+                        else if(addToCart == "n" || addToCart == "N")
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("You have chosen not to add this product to your cart. \n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You have entered an invalid selection. \n");
+                        }
                     }
                     else if(productSelectionInt == 3)
                     {
@@ -193,11 +218,48 @@ class Program
                             productNumber = Console.ReadLine();
                             isValidProductNumber = int.TryParse(productNumber, out productNumberInt);
                         }
-                        ////////////////////////////////////////////////
-                        //TODO: Work on this section
-                        ////////////////////////////////////////////////
+                        
                         string selectedProduct = product.GetProductDetails("cookware", productNumberInt);
                         Console.WriteLine(selectedProduct);
+
+                        Console.Clear();
+                        Console.WriteLine(selectedProduct);
+                        Console.WriteLine();
+                        Console.Write("Would you like to add this product to your cart? (Y/N): ");
+                        string addToCart = Console.ReadLine();
+
+                        if(addToCart == "y" || addToCart == "Y")
+                        {
+                            Console.WriteLine();
+                            Console.Write("Please enter the Quantity you wish to buy: ");
+                            string quantityString = Console.ReadLine();
+                            bool isValidQuantity = int.TryParse(quantityString, out int quantityInt);
+
+                            if(isValidQuantity == false || quantityInt <= 0)
+                            {
+                               Console.WriteLine();
+                               Console.WriteLine("You entered an invalid quantiry amount. \n");
+                               Console.WriteLine();
+                               Console.WriteLine("Please enter the Quantity you wish to buy: ");
+                               quantityString = Console.ReadLine();
+                               isValidQuantity = int.TryParse(quantityString, out quantityInt);
+                            }
+                            
+                            Cart cartItem = new Cart(selectedProduct, quantityInt);
+                            string item = cartItem.ItemToAddToCart();
+                            cart.Add(item);
+                            Console.WriteLine(item);
+                            Console.WriteLine("Your item has been added to your cart. \n");
+                        }
+                        else if(addToCart == "n" || addToCart == "N")
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("You have chosen not to add this product to your cart. \n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You have entered an invalid selection. \n");
+                        }
                     }
                     else if(productSelectionInt == 4)
                     {
@@ -227,11 +289,49 @@ class Program
                             productNumber = Console.ReadLine();
                             isValidProductNumber = int.TryParse(productNumber, out productNumberInt);
                         }
-                        ////////////////////////////////////////////////
-                        //TODO: Work on this section
-                        ////////////////////////////////////////////////
+                        
                         string selectedProduct = product.GetProductDetails("lanterns", productNumberInt);
+                        //Console.WriteLine(selectedProduct);
+
+                        Console.Clear();
                         Console.WriteLine(selectedProduct);
+                        Console.WriteLine();
+                        Console.Write("Would you like to add this product to your cart? (Y/N): ");
+                        string addToCart = Console.ReadLine();
+
+                        if(addToCart == "y" || addToCart == "Y")
+                        {
+                            Console.WriteLine();
+                            Console.Write("Please enter the Quantity you wish to buy: ");
+                            string quantityString = Console.ReadLine();
+                            bool isValidQuantity = int.TryParse(quantityString, out int quantityInt);
+
+                            if(isValidQuantity == false || quantityInt <= 0)
+                            {
+                               Console.WriteLine();
+                               Console.WriteLine("You entered an invalid quantiry amount. \n");
+                               Console.WriteLine();
+                               Console.WriteLine("Please enter the Quantity you wish to buy: ");
+                               quantityString = Console.ReadLine();
+                               isValidQuantity = int.TryParse(quantityString, out quantityInt);
+                            }
+                            
+                            Cart cartItem = new Cart(selectedProduct, quantityInt);
+                            string item = cartItem.ItemToAddToCart();
+                            cart.Add(item);
+                            Console.WriteLine(item);
+                            Console.WriteLine("Your item has been added to your cart. \n");
+                        }
+                        else if(addToCart == "n" || addToCart == "N")
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("You have chosen not to add this product to your cart. \n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You have entered an invalid selection. \n");
+                        }
+
                     }
                     else if(productSelectionInt == 5)
                     {
@@ -248,8 +348,62 @@ class Program
                 }
                 else if (featureSelection == 2)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("You have selected to view your cart. \n");
+                    if(cart.Count == 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Shopping Cart. \n");
+                        Console.WriteLine();
+                        Console.WriteLine("Your cart is empty. \n");
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Shopping Cart. \n");
+                        Console.WriteLine();
+                        Console.WriteLine("Your cart contains the following items: \n");
+                        Console.WriteLine();
+                        Cart shoppingCart = new Cart();
+                        shoppingCart.DisplayCart(cart);
+
+                        Console.WriteLine();
+                        Console.Write("Would you like to remove an item from your cart? (Y/N): ");
+                        string removeItem = Console.ReadLine();
+
+                        if(removeItem == "y" || removeItem == "Y")
+                        {
+                            Console.WriteLine();
+                            Console.Write("Please enter the item number you would like to remove: ");
+                            string itemNumber = Console.ReadLine();
+                            bool isValidItemNumber = int.TryParse(itemNumber, out int itemNumberInt);
+
+                            if(isValidItemNumber == false)
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("You have entered an invalid item number. \n");
+                                Console.WriteLine();
+                                Console.Write("Please enter the item number you would like to remove: ");
+                                itemNumber = Console.ReadLine();
+                                isValidItemNumber = int.TryParse(itemNumber, out itemNumberInt);
+                            }
+
+                            int itemIndex = itemNumberInt - 1;
+                            cart.RemoveAt(itemIndex);
+                            Console.WriteLine("Your item has been removed from your cart. \n");
+                        }
+                        else if(removeItem == "n" || removeItem == "N")
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("You have chosen not to remove an item from your cart. \n");
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("You have entered an invalid selection. \n");
+                        }
+                    }
                 }
                 else if (featureSelection == 3)
                 {

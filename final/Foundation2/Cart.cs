@@ -24,4 +24,14 @@ public class Cart
    {
        return $"{_product}, Quantity: {_quantity}";
    }
+
+   public void DisplayCart(List<string> list)
+   {    
+        int i = 1;
+         foreach (string item in list)
+         {
+            Console.WriteLine(i + ". " + item);
+            i++;
+         }
+   }
 }

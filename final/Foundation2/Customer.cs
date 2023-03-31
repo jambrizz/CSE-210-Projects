@@ -5,15 +5,29 @@ using System.IO;
 
 public class Customer
 {
-    private string _name;
+    private string _firstName;
 
-    public Customer(string name)
+    private string _lastName;
+
+    private string _email;
+
+    private string _phone;
+
+    public Customer(string firstName, string lastName, string email, string phone)
     {
-        _name = name;
+        _firstName = firstName;
+        _lastName = lastName;
+        _email = email;
+        _phone = phone;
     }
 
-    public string GetCustomerName()
+    public string ConfirmCustomerInfo()
     {
-        return "CustomerName: " + _name;
+        return $"\n FirstName: {_firstName} \n LastName: {_lastName} \n Email: {_email} \n Phone: {_phone}";
+    }
+
+    public string GetCustomerInfo()
+    {
+        return $"FirstName: {_firstName}, LastName: {_lastName}, Email: {_email}, Phone: {_phone},";
     }
 }

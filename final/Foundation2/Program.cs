@@ -9,17 +9,21 @@ class Program
     {
         List<string> cart = new List<string>();
         List<string> customer = new List<string>();
+        List<string> orderHistory = new List<string>();
         bool programRun = true;
         do
         {
             Console.WriteLine();
-            Console.WriteLine("Welcome to the Camping Outlet!");
+            Console.WriteLine("Welcome to the Camping WholeSale Supply!");
             Console.WriteLine("We have the best camping gear at the best prices!");
             Console.WriteLine("Site Navigation");
             Console.WriteLine("1. Browse Products");
             Console.WriteLine("2. View Cart");
             Console.WriteLine("3. Checkout");
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("4. Packing label");
+            Console.WriteLine("5. Shipping label");
+            Console.WriteLine("6. Order History");
+            Console.WriteLine("7. Exit");
             Console.Write("Please enter a number to navigate to the desired page: ");
             string userSelection = Console.ReadLine();
             bool isValidSelection = int.TryParse(userSelection, out int userSelectionInt);
@@ -33,8 +37,10 @@ class Program
             {
                 int featureSelection = int.Parse(userSelection);
                 
+                //////////////////// Browse Products ////////////////////
                 if(featureSelection == 1)
                 {
+                    Console.Clear();
                     Console.WriteLine();
                     Console.WriteLine("Camping Outlet Products");
                     Console.WriteLine("1. Tents");
@@ -346,6 +352,7 @@ class Program
                     }
 
                 }
+                //////////////////// Shopping Cart ////////////////////
                 else if (featureSelection == 2)
                 {
                     if(cart.Count == 0)
@@ -359,6 +366,9 @@ class Program
                     }
                     else
                     {
+                        /////////////////////////////////////////////
+                        //If I have enough time I would like to add a method to the Cart class to change the quantity of an item in the cart.
+                        /////////////////////////////////////////////
                         Console.Clear();
                         Console.WriteLine();
                         Console.WriteLine("Shopping Cart. \n");
@@ -405,16 +415,166 @@ class Program
                         }
                     }
                 }
+                ////////////////////   Checkout  ////////////////////
                 else if (featureSelection == 3)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("You have selected to checkout. \n");
+                    if(cart.Count == 0)
+                    {
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Checkout: \n");
+                        Console.WriteLine();
+                        Console.WriteLine("Your cart is empty. \n");
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine();
+                        Console.WriteLine("Checkout: \n");
+                        Console.WriteLine();
+                        Console.WriteLine("Your cart contains the following items: \n");
+                        Console.WriteLine();
+                        Cart shoppingCart = new Cart();
+                        shoppingCart.DisplayCart(cart);
+
+                        double subtotal = shoppingCart.GetSubtotal(cart);
+
+                        Console.WriteLine();
+                        Console.WriteLine($"Subtotal: {subtotal}");
+
+                        Console.WriteLine();
+                        Console.Write("Would you like to proceed to checkout? (Y/N): ");
+                        string continueToCheckout = Console.ReadLine();
+
+                        if(continueToCheckout == "y" || continueToCheckout == "Y")
+                        {
+                            Console.Clear();
+                            Console.WriteLine();
+                            Console.WriteLine("Customer Info. \n");
+                            Console.WriteLine();
+                            Console.Write("Enter your first name: ");
+                            string firstName = Console.ReadLine();
+                            Console.WriteLine();
+                            Console.Write("Enter your last name: ");
+                            string lastName = Console.ReadLine();
+                            Console.WriteLine();
+                            Console.Write("Enter your email address: ");
+                            string email = Console.ReadLine();
+                            Console.WriteLine();
+                            Console.Write("Enter your phone number(no dashes or paranthesis): ");
+                            string phoneNumber = Console.ReadLine();
+
+                            Console.WriteLine();
+                            Console.WriteLine("Shipping Info. \n");
+                            Console.WriteLine();
+                            Console.Write("Enter your street address: ");
+                            string streetAddress = Console.ReadLine();
+                            Console.WriteLine();
+                            Console.Write("Enter your city: ");
+                            string city = Console.ReadLine();
+                            Console.WriteLine();
+                            Console.Write("Enter your state/province: ");
+                            string state = Console.ReadLine();
+                            Console.WriteLine();
+                            Console.Write("Enter your zip/postal code: ");
+                            string zipCode = Console.ReadLine();
+                            Console.WriteLine();
+                            Console.Write("Enter your country: ");
+                            string country = Console.ReadLine();
+
+                            Customer customerInfo = new Customer(firstName, lastName, email, phoneNumber);
+
+                            Shipping shippingInfo = new Shipping(streetAddress, city, state, zipCode, country);
+
+                            string customerDet = customerInfo.ConfirmCustomerInfo();
+                            string shippingDet = shippingInfo.ConfirmShippingDetails();
+                            Console.WriteLine();
+                            Console.WriteLine(customerDet);
+                            Console.WriteLine();
+                            Console.WriteLine(shippingDet);
+                            Console.WriteLine();
+
+                            Console.Write("Is you information correct? (Y/N): ");
+                            string confirmInfo = Console.ReadLine();
+
+                            if(confirmInfo == "y" || confirmInfo == "Y")
+                            {
+                                customer.Add($"Customer: {customerInfo.GetCustomerInfo()} {shippingInfo.GetShippingAddress()} \n");
+
+                                if(country == "united states of america" || country == "United States of America" || country == "USA" || country == "usa" || country == "U.S.A." || country == "u.s.a." || country == "US" || country == "us" || country =="U.S." || country == "u.s.")
+                                {
+                                    bool shipping = true;
+                                    double shippingFee = shoppingCart.GetShippingFee(shipping);
+                                    double total = shoppingCart.GetTotal(subtotal, shippingFee);
+                                    Console.WriteLine($"Subtotal: {subtotal}");
+                                    Console.WriteLine($"Shipping fee: {shippingFee}");
+                                    Console.WriteLine($"------------------------");
+                                    Console.WriteLine($"Total: {total}");
+                                    /////////////////////////////////////////////
+                                    //TODO: This is where I left off.
+                                    /////////////////////////////////////////////
+                                }
+                                else
+                                {
+                                    bool shipping = false;
+                                    double shippingFee = shoppingCart.GetShippingFee(shipping);
+                                    double total = shoppingCart.GetTotal(subtotal, shippingFee);
+                                    Console.WriteLine($"Subtotal: {subtotal}");
+                                    Console.WriteLine($"Shipping fee: {shippingFee}");
+                                    Console.WriteLine($"------------------------");
+                                    Console.WriteLine($"Total: {total}");
+                                    /////////////////////////////////////////////
+                                    //TODO: This is where I left off.
+                                    /////////////////////////////////////////////
+                                }
+                                
+                            }
+                            else if(confirmInfo == "n" || confirmInfo == "N")
+                            {
+                                /////////////////////////////////////////////
+                                //TODO: This is where I left off.
+                                /////////////////////////////////////////////
+                            }
+                            else
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("You have entered an invalid selection. \n");
+                            }
+                           
+                        }
+                        else if(continueToCheckout == "n" || continueToCheckout == "N")
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("You have chosen not to proceed to checkout. \n");
+                        }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("You have entered an invalid selection. \n");
+                        }
+                    }
                 }
+                ////////////////////   Packing label  ////////////////////
                 else if (featureSelection == 4)
                 {
-                    Console.WriteLine();
-                    Console.WriteLine("Thank you for visiting Camping Outlet! See you next time. \n");
-                    programRun = false;
+                    
+                }
+                ////////////////////   Shipping label  ////////////////////
+                else if (featureSelection == 5)
+                {
+                    
+                }
+                ////////////////////   order history  ////////////////////
+                else if (featureSelection == 6)
+                {
+
+                }
+                ////////////////////   Exit  ////////////////////
+                else if (featureSelection == 7)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Thank you for using Camping WholeSale Supply order system. \n");
                 }
                 else
                 {

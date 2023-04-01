@@ -22,7 +22,7 @@ public class Cart
 
    public string ItemToAddToCart()
    {
-       return $"{_product}, Quantity: {_quantity}";
+       return $"{_product}, Quantity: {_quantity},";
    }
 
    public void DisplayCart(List<string> list)

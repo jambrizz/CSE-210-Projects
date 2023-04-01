@@ -8,7 +8,6 @@ class Program
     static void Main(string[] args)
     {
         List<string> cart = new List<string>();
-        List<string> customer = new List<string>();
         List<string> orderHistory = new List<string>();
         bool programRun = true;
         do
@@ -500,7 +499,11 @@ class Program
 
                             if(confirmInfo == "y" || confirmInfo == "Y")
                             {
-                                customer.Add($"Customer: {customerInfo.GetCustomerInfo()} {shippingInfo.GetShippingAddress()} \n");
+                                //customer.Add($"Customer: {customerInfo.GetCustomerInfo()} {shippingInfo.GetShippingAddress()} \n");
+
+                                string customerInfoString = customerInfo.GetCustomerInfo();
+
+                                string shippingInfoString = shippingInfo.GetShippingAddress();
 
                                 if(country == "united states of america" || country == "United States of America" || country == "USA" || country == "usa" || country == "U.S.A." || country == "u.s.a." || country == "US" || country == "us" || country =="U.S." || country == "u.s.")
                                 {
@@ -514,6 +517,29 @@ class Program
                                     /////////////////////////////////////////////
                                     //TODO: This is where I left off.
                                     /////////////////////////////////////////////
+                                    Console.WriteLine();
+                                    Console.WriteLine("Place order? (Y/N): ");
+                                    string placeOrder = Console.ReadLine();
+
+                                    if(placeOrder == "y" || placeOrder == "Y")
+                                    {
+                                        Order order = new Order(customerInfoString, shippingInfoString, cart, total);
+                                        string orderPlaced = order.PlaceOrder();
+                                        orderHistory.Add(orderPlaced);
+                                        cart.Clear();
+                                        Console.WriteLine();
+                                        Console.WriteLine("Your order has been placed. \n");
+                                    }
+                                    else if(placeOrder == "n" || placeOrder == "N")
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("You have chosen not to place an order. \n");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("You have entered an invalid selection. \n");
+                                    }
                                 }
                                 else
                                 {
@@ -527,14 +553,39 @@ class Program
                                     /////////////////////////////////////////////
                                     //TODO: This is where I left off.
                                     /////////////////////////////////////////////
+                                    Console.WriteLine();
+                                    Console.WriteLine("Place order? (Y/N): ");
+                                    string placeOrder = Console.ReadLine();
+
+                                    if(placeOrder == "y" || placeOrder == "Y")
+                                    {
+                                        Order order = new Order(customerInfoString, shippingInfoString, cart, total);
+                                        string orderPlaced = order.PlaceOrder();
+                                        orderHistory.Add(orderPlaced);
+                                        cart.Clear();
+                                        Console.WriteLine();
+                                        Console.WriteLine("Your order has been placed. \n");
+                                    }
+                                    else if(placeOrder == "n" || placeOrder == "N")
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("You have chosen not to place an order. \n");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("You have entered an invalid selection. \n");
+                                    }
                                 }
                                 
                             }
                             else if(confirmInfo == "n" || confirmInfo == "N")
                             {
-                                /////////////////////////////////////////////
-                                //TODO: This is where I left off.
-                                /////////////////////////////////////////////
+                                Console.WriteLine();
+                                Console.WriteLine("You have chosen not to confirm your information. \n");
+                                Console.WriteLine();
+                                Console.WriteLine("If you need to modify your order, Please select 2. View Cart in the main menu. \n");
+                                Console.WriteLine();
                             }
                             else
                             {
@@ -547,6 +598,9 @@ class Program
                         {
                             Console.WriteLine();
                             Console.WriteLine("You have chosen not to proceed to checkout. \n");
+                            Console.WriteLine();
+                            Console.WriteLine("If you need to modify your customer/shipping info, please select 3. Checkout in the main menu and start over. \n");
+                            Console.WriteLine();
                         }
                         else
                         {

@@ -523,12 +523,14 @@ class Program
 
                                     if(placeOrder == "y" || placeOrder == "Y")
                                     {
-                                        Order order = new Order(customerInfoString, shippingInfoString, cart, total);
+                                        Order order = new Order(customerInfoString, shippingInfoString, cart, total, subtotal, shippingFee);
                                         string orderPlaced = order.PlaceOrder();
                                         orderHistory.Add(orderPlaced);
                                         cart.Clear();
                                         Console.WriteLine();
                                         Console.WriteLine("Your order has been placed. \n");
+                                        File file = new File();
+                                        file.SaveToArchive(orderHistory);
                                     }
                                     else if(placeOrder == "n" || placeOrder == "N")
                                     {
@@ -559,17 +561,19 @@ class Program
 
                                     if(placeOrder == "y" || placeOrder == "Y")
                                     {
-                                        Order order = new Order(customerInfoString, shippingInfoString, cart, total);
+                                        Order order = new Order(customerInfoString, shippingInfoString, cart, total, subtotal, shippingFee);
                                         string orderPlaced = order.PlaceOrder();
                                         orderHistory.Add(orderPlaced);
                                         cart.Clear();
                                         Console.WriteLine();
                                         Console.WriteLine("Your order has been placed. \n");
+                                        File file = new File();
+                                        file.SaveToArchive(orderHistory);
                                     }
                                     else if(placeOrder == "n" || placeOrder == "N")
                                     {
                                         Console.WriteLine();
-                                        Console.WriteLine("You have chosen not to place an order. \n");
+                                        Console.WriteLine("You have chosen not to place the order. \n");
                                     }
                                     else
                                     {
@@ -586,6 +590,7 @@ class Program
                                 Console.WriteLine();
                                 Console.WriteLine("If you need to modify your order, Please select 2. View Cart in the main menu. \n");
                                 Console.WriteLine();
+
                             }
                             else
                             {
